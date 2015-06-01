@@ -16,7 +16,7 @@ int64_t GetWeight(int64_t nIntervalBeginning, int64_t nIntervalEnd)
     // this change increases active coins participating the hash and helps
     // to secure the network when proof-of-stake difficulty is low
 
-    return nIntervalEnd - nIntervalBeginning - nStakeMinAge;
+    return min(nIntervalEnd - nIntervalBeginning - nStakeMinAge, (int64_t)nStakeMaxAge);
 }
 
 // Get the last stake modifier and its generation time from a given block
@@ -264,8 +264,18 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned 
     int64_t nValueIn = txPrev.vout[prevout.n].nValue;
 
     uint256 hashBlockFrom = blockFrom.GetHash();
+    int64_t bnCoinDayWeight_Calc;
 
-    CBigNum bnCoinDayWeight = CBigNum(nValueIn) * GetWeight((int64_t)txPrev.nTime, (int64_t)nTimeTx) / COIN / (24 * 60 * 60);
+    //  Add accumulated weight to .9 so coins are eligible to stake sooner. Boost coin weight 100x
+    int nDayTime = 24 * 60 * 60; // Length of a Day
+    int nWeightFactor = 100;
+    int64_t nDivideBase = nDayTime * COIN / nWeightFactor; // For dividing out COIN and day length and increasing weight factor
+    bnCoinDayWeight_Calc = (9 + (10 * nValueIn * GetWeight((int64_t)txPrev.nTime, (int64_t)nTimeTx) / nDivideBase)) / 10; // Dirty Hack to allow weight to begin at .9
+
+
+    CBigNum bnCoinDayWeight = CBigNum(bnCoinDayWeight_Calc);
+
+
     targetProofOfStake = (bnCoinDayWeight * bnTargetPerCoinDay).getuint256();
 
     // Calculate hash

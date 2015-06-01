@@ -67,7 +67,7 @@ struct MessageTableEntry
     }
 };
 
-/** Interface to Jumbucks Secure Messaging from Qt view code. */
+/** Interface to Genstake Secure Messaging from Qt view code. */
 class MessageModel : public QAbstractTableModel
 {
     Q_OBJECT

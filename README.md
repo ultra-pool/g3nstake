@@ -1,7 +1,7 @@
 
-Jumbucks development tree
+Genstake development tree
 
-Jumbucks is a PoS-based cryptocurrency.
+Genstake is a PoS-based cryptocurrency.
 
 Development process
 ===========================
@@ -16,7 +16,7 @@ or are controversial.
 
 The master branch is regularly built and tested, but is not guaranteed
 to be completely stable. Tags are regularly created to indicate new
-stable release versions of Jumbucks.
+stable release versions of Genstake.
 
 Feature branches are created when there are major new features being
 worked on by several people.

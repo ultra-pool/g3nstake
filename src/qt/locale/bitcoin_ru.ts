@@ -3,23 +3,23 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Jumbucks</source>
-        <translation>О Jumbucks</translation>
+        <source>About Genstake</source>
+        <translation>О Genstake</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Jumbucks&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Jumbucks&lt;/b&gt; версия</translation>
+        <source>&lt;b&gt;Genstake&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Genstake&lt;/b&gt; версия</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2014 The BlackCoin developers
-Copyright © 2014-2015 The Jumbucks developers</source>
+Copyright © 2014-2015 The Genstake developers</source>
         <translation>Все права защищены © 2009-2014 Разработчики Bitcoin
 Все права защищены © 2012-2014 Разработчики NovaCoin
-Все права защищены © 2014-2015 Разработчики Jumbucks</translation>
+Все права защищены © 2014-2015 Разработчики Genstake</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -66,7 +66,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your Jumbucks addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <source>These are your Genstake addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
         <translation>Это Ваши адреса для получения платежей. Вы можете дать разные адреса отправителям, чтобы отслеживать, кто именно вам платит.</translation>
     </message>
     <message>
@@ -81,8 +81,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Jumbucks address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом Jumbucks</translation>
+        <source>Sign a message to prove you own a Genstake address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом Genstake</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -96,8 +96,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified Jumbucks address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Jumbucks</translation>
+        <source>Verify a message to ensure it was signed with a specified Genstake address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Genstake</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -264,7 +264,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-58"/>
-        <source>Jumbucks will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <source>Genstake will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
         <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши монеты от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
@@ -378,8 +378,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Jumbucks</source>
-        <translation>Показать информацию о Jumbucks&apos;е</translation>
+        <source>Show information about Genstake</source>
+        <translation>Показать информацию о Genstake&apos;е</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -428,13 +428,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-62"/>
-        <source>Send coins to a Jumbucks address</source>
-        <translation>Отправить монеты на указанный адрес Jumbucks</translation>
+        <source>Send coins to a Genstake address</source>
+        <translation>Отправить монеты на указанный адрес Genstake</translation>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for Jumbucks</source>
-        <translation>Изменить параметры конфигурации Jumbucks</translation>
+        <source>Modify configuration options for Genstake</source>
+        <translation>Изменить параметры конфигурации Genstake</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -473,8 +473,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-200"/>
-        <source>Jumbucks</source>
-        <translation>Jumbucks</translation>
+        <source>Genstake</source>
+        <translation>Genstake</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -483,8 +483,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+178"/>
-        <source>&amp;About Jumbucks</source>
-        <translation>&amp;О Jumbucks</translation>
+        <source>&amp;About Genstake</source>
+        <translation>&amp;О Genstake</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -540,12 +540,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>Jumbucks client</source>
-        <translation>Jumbucks клиент</translation>
+        <source>Genstake client</source>
+        <translation>Genstake клиент</translation>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to Jumbucks network</source>
+        <source>%n active connection(s) to Genstake network</source>
         <translation><numerusform>%n активное соединение с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform></translation>
     </message>
     <message>
@@ -660,8 +660,8 @@ Address: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid Jumbucks address or malformed URI parameters.</source>
-        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом Jumbucks или неправильными параметрами URI.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Genstake address or malformed URI parameters.</source>
+        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом Genstake или неправильными параметрами URI.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -720,8 +720,8 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. Jumbucks can no longer continue safely and will quit.</source>
-        <translation>Произошла неисправимая ошибка. Jumbucks не может безопасно продолжать работу и будет закрыт.</translation>
+        <source>A fatal error occurred. Genstake can no longer continue safely and will quit.</source>
+        <translation>Произошла неисправимая ошибка. Genstake не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
 </context>
 <context>
@@ -1040,8 +1040,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Jumbucks address.</source>
-        <translation>Введённый адрес &quot;%1&quot; не является правильным Jumbucks-адресом.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Genstake address.</source>
+        <translation>Введённый адрес &quot;%1&quot; не является правильным Genstake-адресом.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1059,8 +1059,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>Jumbucks-Qt</source>
-        <translation>Jumbucks-Qt</translation>
+        <source>Genstake-Qt</source>
+        <translation>Genstake-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1132,13 +1132,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Jumbucks after logging in to the system.</source>
-        <translation>Автоматически запускать Jumbucks после входа в систему</translation>
+        <source>Automatically start Genstake after logging in to the system.</source>
+        <translation>Автоматически запускать Genstake после входа в систему</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Jumbucks on system login</source>
-        <translation>&amp;Запускать Jumbucks при входе в систему</translation>
+        <source>&amp;Start Genstake on system login</source>
+        <translation>&amp;Запускать Genstake при входе в систему</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1157,8 +1157,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Jumbucks client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для Jumbucks-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
+        <source>Automatically open the Genstake client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть порт для Genstake-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1167,8 +1167,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Jumbucks network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Подключаться к сети Jumbucks через прокси SOCKS (например, при подключении через Tor).</translation>
+        <source>Connect to the Genstake network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Подключаться к сети Genstake через прокси SOCKS (например, при подключении через Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1242,8 +1242,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Jumbucks.</source>
-        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска Jumbucks.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Genstake.</source>
+        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска Genstake.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1257,8 +1257,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Jumbucks addresses in the transaction list or not.</source>
-        <translation>Показывать ли адреса Jumbucks в списке транзакций.</translation>
+        <source>Whether to show Genstake addresses in the transaction list or not.</source>
+        <translation>Показывать ли адреса Genstake в списке транзакций.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1304,8 +1304,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Jumbucks.</source>
-        <translation>Эта настройка вступит в силу после перезапуска Jumbucks</translation>
+        <source>This setting will take effect after restarting Genstake.</source>
+        <translation>Эта настройка вступит в силу после перезапуска Genstake</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1323,8 +1323,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Jumbucks network after a connection is established, but this process has not completed yet.</source>
-        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью Jumbucks после подключения, но этот процесс пока не завершён.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Genstake network after a connection is established, but this process has not completed yet.</source>
+        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью Genstake после подключения, но этот процесс пока не завершён.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1539,8 +1539,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Jumbucks-Qt help message to get a list with possible Jumbucks command-line options.</source>
-        <translation>Показать помощь по Jumbucks-Qt, чтобы получить список доступных параметров командной строки.</translation>
+        <source>Show the Genstake-Qt help message to get a list with possible Genstake command-line options.</source>
+        <translation>Показать помощь по Genstake-Qt, чтобы получить список доступных параметров командной строки.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1559,13 +1559,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-104"/>
-        <source>Jumbucks - Debug window</source>
-        <translation>Jumbucks - Окно отладки</translation>
+        <source>Genstake - Debug window</source>
+        <translation>Genstake - Окно отладки</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Jumbucks Core</source>
-        <translation>Ядро Jumbucks</translation>
+        <source>Genstake Core</source>
+        <translation>Ядро Genstake</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1574,8 +1574,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Jumbucks debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Открыть отладочный лог-файл Jumbucks из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
+        <source>Open the Genstake debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Открыть отладочный лог-файл Genstake из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1584,8 +1584,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the Jumbucks RPC console.</source>
-        <translation>Добро пожаловать в RPC-консоль Jumbucks.</translation>
+        <source>Welcome to the Genstake RPC console.</source>
+        <translation>Добро пожаловать в RPC-консоль Genstake.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1658,7 +1658,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+86"/>
         <location line="+86"/>
         <location line="+32"/>
-        <source>0.00 JBS</source>
+        <source>0.00 GEN</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1728,8 +1728,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+16"/>
-        <source>123.456 JBS</source>
-        <translation>123.456 JBS</translation>
+        <source>123.456 GEN</source>
+        <translation>123.456 GEN</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1743,8 +1743,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Введите Jumbucks-адрес (например JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Введите Genstake-адрес (например JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1843,7 +1843,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid Jumbucks address</source>
+        <source>WARNING: Invalid Genstake address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1917,8 +1917,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Введите Jumbucks-адрес (например JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Введите Genstake-адрес (например JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
 </context>
 <context>
@@ -1978,8 +1978,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Jumbucks address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом Jumbucks</translation>
+        <source>Sign the message to prove you own this Genstake address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом Genstake</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2010,8 +2010,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Jumbucks address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Jumbucks</translation>
+        <source>Verify the message to ensure it was signed with the specified Genstake address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Genstake</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2021,8 +2021,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Введите адрес Jumbucks (напр. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Введите адрес Genstake (напр. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2031,8 +2031,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Jumbucks signature</source>
-        <translation>Введите подпись Jumbucks</translation>
+        <source>Enter Genstake signature</source>
+        <translation>Введите подпись Genstake</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2602,7 +2602,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>Jumbucks version</source>
+        <source>Genstake version</source>
         <translation>Версия</translation>
     </message>
     <message>
@@ -2612,8 +2612,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or jumbucksd</source>
-        <translation>Отправить команду на -server или jumbucksd</translation>
+        <source>Send command to -server or genstaked</source>
+        <translation>Отправить команду на -server или genstaked</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2633,13 +2633,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: jumbucks.conf)</source>
-        <translation>Указать конфигурационный файл (по умолчанию: jumbucks.conf)</translation>
+        <source>Specify configuration file (default: genstake.conf)</source>
+        <translation>Указать конфигурационный файл (по умолчанию: genstake.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: jumbucksd.pid)</source>
-        <translation>Указать pid-файл (по умолчанию: jumbucksd.pid)</translation>
+        <source>Specify pid file (default: genstaked.pid)</source>
+        <translation>Указать pid-файл (по умолчанию: genstaked.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2788,8 +2788,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Jumbucks will not work properly.</source>
-        <translation>Внимание: убедитесь, что дата и время на Вашем компьютере выставлены верно. Если Ваши часы идут неправильно, Jumbucks будет работать некорректно.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Genstake will not work properly.</source>
+        <translation>Внимание: убедитесь, что дата и время на Вашем компьютере выставлены верно. Если Ваши часы идут неправильно, Genstake будет работать некорректно.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -2978,13 +2978,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=jumbucksrpc
+rpcuser=genstakerpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Genstake Alert&quot; admin@foo.com
 </source>
         <translation type="unfinished"/>
     </message>
@@ -3110,13 +3110,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  Jumbucks is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s.  Genstake is probably already running.</source>
         <translation>Невозможно установить блокировку на рабочую директорию %s.  Возможно, бумажник уже запущен.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>Jumbucks</source>
-        <translation>Jumbucks</translation>
+        <source>Genstake</source>
+        <translation>Genstake</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3150,13 +3150,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Jumbucks</source>
-        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию Jumbucks</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Genstake</source>
+        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию Genstake</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart Jumbucks to complete</source>
-        <translation>Необходимо перезаписать бумажник, перезапустите Jumbucks для завершения операции</translation>
+        <source>Wallet needed to be rewritten: restart Genstake to complete</source>
+        <translation>Необходимо перезаписать бумажник, перезапустите Genstake для завершения операции</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3225,8 +3225,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. Jumbucks is probably already running.</source>
-        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, Jumbucks уже работает.</translation>
+        <source>Unable to bind to %s on this computer. Genstake is probably already running.</source>
+        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, Genstake уже работает.</translation>
     </message>
     <message>
         <location line="-97"/>

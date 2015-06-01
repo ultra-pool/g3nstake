@@ -3,20 +3,20 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Jumbucks</source>
-        <translation>O Jumbucks</translation>
+        <source>About Genstake</source>
+        <translation>O Genstake</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Jumbucks&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Jumbucks&lt;/b&gt; verzija</translation>
+        <source>&lt;b&gt;Genstake&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Genstake&lt;/b&gt; verzija</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2014 The BlackCoin developers
-Copyright © 2014-2015 The Jumbucks developers</source>
+Copyright © 2014-2015 The Genstake developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -64,8 +64,8 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your Jumbucks addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>To so vaši Jumbucks naslovi za prejemanje plačil. Priporočeno je da vsakemu pošiljatelju namenite drugega in tako dobite večji pregled nad svojimi nakazili.</translation>
+        <source>These are your Genstake addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>To so vaši Genstake naslovi za prejemanje plačil. Priporočeno je da vsakemu pošiljatelju namenite drugega in tako dobite večji pregled nad svojimi nakazili.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -79,8 +79,8 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Jumbucks address</source>
-        <translation>Podpišite sporočilo, kot dokazilo lastništva Jumbucks naslova</translation>
+        <source>Sign a message to prove you own a Genstake address</source>
+        <translation>Podpišite sporočilo, kot dokazilo lastništva Genstake naslova</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -94,8 +94,8 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified Jumbucks address</source>
-        <translation>Potrdi sporočilo, da zagotovite, da je bilo podpisano z izbranim Jumbucks naslovom</translation>
+        <source>Verify a message to ensure it was signed with a specified Genstake address</source>
+        <translation>Potrdi sporočilo, da zagotovite, da je bilo podpisano z izbranim Genstake naslovom</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -262,8 +262,8 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="-58"/>
-        <source>Jumbucks will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>Jumbucks se bo sedaj zaprl, da dokonča proces šifriranje. Pomnite, da tudi šifriranje vaše denarnice ne more v celoti zaščititi vaših kovancev pred krajo z zlonamernimi programi in računalniškimi virusi, če ti okužijo vaš računalnik.</translation>
+        <source>Genstake will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>Genstake se bo sedaj zaprl, da dokonča proces šifriranje. Pomnite, da tudi šifriranje vaše denarnice ne more v celoti zaščititi vaših kovancev pred krajo z zlonamernimi programi in računalniškimi virusi, če ti okužijo vaš računalnik.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -376,8 +376,8 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Jumbucks</source>
-        <translation>Pokaži informacije o Jumbucks</translation>
+        <source>Show information about Genstake</source>
+        <translation>Pokaži informacije o Genstake</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -426,13 +426,13 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="-62"/>
-        <source>Send coins to a Jumbucks address</source>
-        <translation>Pošlji kovance na Jumbucks naslov</translation>
+        <source>Send coins to a Genstake address</source>
+        <translation>Pošlji kovance na Genstake naslov</translation>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for Jumbucks</source>
-        <translation>Spremeni nastavitve za Jumbucks</translation>
+        <source>Modify configuration options for Genstake</source>
+        <translation>Spremeni nastavitve za Genstake</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -471,8 +471,8 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="-200"/>
-        <source>Jumbucks</source>
-        <translation>Jumbucks</translation>
+        <source>Genstake</source>
+        <translation>Genstake</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -481,8 +481,8 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="+178"/>
-        <source>&amp;About Jumbucks</source>
-        <translation>&amp;O Jumbucks</translation>
+        <source>&amp;About Genstake</source>
+        <translation>&amp;O Genstake</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -538,13 +538,13 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>Jumbucks client</source>
-        <translation>Jumbucks program</translation>
+        <source>Genstake client</source>
+        <translation>Genstake program</translation>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to Jumbucks network</source>
-        <translation><numerusform>%n aktivne povezave na Jumbucks omrežje</numerusform><numerusform>%n aktivnih povezav na Jumbucks omrežje</numerusform><numerusform>%n aktivnih povezav na Jumbucks omrežje</numerusform><numerusform>%n aktivnih povezav na Jumbucks omrežje</numerusform></translation>
+        <source>%n active connection(s) to Genstake network</source>
+        <translation><numerusform>%n aktivne povezave na Genstake omrežje</numerusform><numerusform>%n aktivnih povezav na Genstake omrežje</numerusform><numerusform>%n aktivnih povezav na Genstake omrežje</numerusform><numerusform>%n aktivnih povezav na Genstake omrežje</numerusform></translation>
     </message>
     <message>
         <location line="+40"/>
@@ -658,8 +658,8 @@ Naslov: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid Jumbucks address or malformed URI parameters.</source>
-        <translation>URI ne more biti razčlenjen! To se lahko zgodi zaradi neveljavnega Jumbucks naslova ali slabih parametrov URI.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Genstake address or malformed URI parameters.</source>
+        <translation>URI ne more biti razčlenjen! To se lahko zgodi zaradi neveljavnega Genstake naslova ali slabih parametrov URI.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -718,8 +718,8 @@ Naslov: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. Jumbucks can no longer continue safely and will quit.</source>
-        <translation>Prišlo je do usodne napake. Program Jumbucks se ne more več varno nadaljevati in se bo zato zaprl. </translation>
+        <source>A fatal error occurred. Genstake can no longer continue safely and will quit.</source>
+        <translation>Prišlo je do usodne napake. Program Genstake se ne more več varno nadaljevati in se bo zato zaprl. </translation>
     </message>
 </context>
 <context>
@@ -1052,8 +1052,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Jumbucks address.</source>
-        <translation>Vneseni naslov &quot;%1&quot; ni veljaven Jumbucks naslov.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Genstake address.</source>
+        <translation>Vneseni naslov &quot;%1&quot; ni veljaven Genstake naslov.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1071,8 +1071,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>Jumbucks-Qt</source>
-        <translation>Jumbucks-Qt</translation>
+        <source>Genstake-Qt</source>
+        <translation>Genstake-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1144,13 +1144,13 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Jumbucks after logging in to the system.</source>
-        <translation>Avtomatično zaženi Jumbucks ob zagonu sistema.</translation>
+        <source>Automatically start Genstake after logging in to the system.</source>
+        <translation>Avtomatično zaženi Genstake ob zagonu sistema.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Jumbucks on system login</source>
-        <translation>&amp;Zaženi Jumbucks ob prijavi v sistem</translation>
+        <source>&amp;Start Genstake on system login</source>
+        <translation>&amp;Zaženi Genstake ob prijavi v sistem</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1169,8 +1169,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Jumbucks client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Avtomatično odpri vrata na routerju za Jumbucks program. To deluje le če vaš router podpira UPnP in je ta omogočen. </translation>
+        <source>Automatically open the Genstake client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Avtomatično odpri vrata na routerju za Genstake program. To deluje le če vaš router podpira UPnP in je ta omogočen. </translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1179,8 +1179,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Jumbucks network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Poveži se na Jumbucks omrežje skozi SOCKS proxy (npr. ko se povezujete prek Tora)</translation>
+        <source>Connect to the Genstake network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Poveži se na Genstake omrežje skozi SOCKS proxy (npr. ko se povezujete prek Tora)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1254,8 +1254,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Jumbucks.</source>
-        <translation>Tu lahko nastavite jezik uporabniškega vmesnika. Nastavitve bodo pričele delovati ob ponovnem zagonu Jumbucks aplikacije. </translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Genstake.</source>
+        <translation>Tu lahko nastavite jezik uporabniškega vmesnika. Nastavitve bodo pričele delovati ob ponovnem zagonu Genstake aplikacije. </translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1269,8 +1269,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Jumbucks addresses in the transaction list or not.</source>
-        <translation>Izbira prikaza Jumbucks naslovov v seznamu transakcij.</translation>
+        <source>Whether to show Genstake addresses in the transaction list or not.</source>
+        <translation>Izbira prikaza Genstake naslovov v seznamu transakcij.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1316,8 +1316,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Jumbucks.</source>
-        <translation>Ta nastavitev bo pričela delovati ob ponovnem zagonu Jumbucks aplikacije</translation>
+        <source>This setting will take effect after restarting Genstake.</source>
+        <translation>Ta nastavitev bo pričela delovati ob ponovnem zagonu Genstake aplikacije</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1335,8 +1335,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Jumbucks network after a connection is established, but this process has not completed yet.</source>
-        <translation>Prikazane informacije so morda zastarele. Vaša denarnica se avtomatično sinhronizira z Jumbucks omrežjem, ko je vzpostavljena povezava, toda ta proces še ni bil zaključen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Genstake network after a connection is established, but this process has not completed yet.</source>
+        <translation>Prikazane informacije so morda zastarele. Vaša denarnica se avtomatično sinhronizira z Genstake omrežjem, ko je vzpostavljena povezava, toda ta proces še ni bil zaključen.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1551,8 +1551,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Jumbucks-Qt help message to get a list with possible Jumbucks command-line options.</source>
-        <translation>Prikaži Jumbucks-Qt sporočilo za pomoč , ki prikaže vse možnosti ukazne vrstice Jumbucks aplikacije</translation>
+        <source>Show the Genstake-Qt help message to get a list with possible Genstake command-line options.</source>
+        <translation>Prikaži Genstake-Qt sporočilo za pomoč , ki prikaže vse možnosti ukazne vrstice Genstake aplikacije</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1571,13 +1571,13 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="-104"/>
-        <source>Jumbucks - Debug window</source>
-        <translation>Jumbucks - okno za odpravljanje napak</translation>
+        <source>Genstake - Debug window</source>
+        <translation>Genstake - okno za odpravljanje napak</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Jumbucks Core</source>
-        <translation>Jumbucks jedro</translation>
+        <source>Genstake Core</source>
+        <translation>Genstake jedro</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1586,8 +1586,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Jumbucks debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Odpri Jumbucks datoteko zapisov odpravljanja napak iz trenutnega direktorija podatkov. Če so datoteke zapisov velike, to lahko traja nekaj sekund.</translation>
+        <source>Open the Genstake debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Odpri Genstake datoteko zapisov odpravljanja napak iz trenutnega direktorija podatkov. Če so datoteke zapisov velike, to lahko traja nekaj sekund.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1596,8 +1596,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the Jumbucks RPC console.</source>
-        <translation>Dobrodošli v Jumbucks RPC konzoli.</translation>
+        <source>Welcome to the Genstake RPC console.</source>
+        <translation>Dobrodošli v Genstake RPC konzoli.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1670,8 +1670,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
         <location line="+86"/>
         <location line="+86"/>
         <location line="+32"/>
-        <source>0.00 JBS</source>
-        <translation>123.456 JBS {0.00 ?}</translation>
+        <source>0.00 GEN</source>
+        <translation>123.456 GEN {0.00 ?}</translation>
     </message>
     <message>
         <location line="-191"/>
@@ -1740,8 +1740,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+16"/>
-        <source>123.456 JBS</source>
-        <translation>123.456 JBS</translation>
+        <source>123.456 GEN</source>
+        <translation>123.456 GEN</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1755,8 +1755,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Vnesite Jumbucks naslov (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Vnesite Genstake naslov (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1855,8 +1855,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid Jumbucks address</source>
-        <translation>OPOZORILO: Neveljaven Jumbucks naslov</translation>
+        <source>WARNING: Invalid Genstake address</source>
+        <translation>OPOZORILO: Neveljaven Genstake naslov</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1929,8 +1929,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Vnesite Jumbucks naslov (npr. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Vnesite Genstake naslov (npr. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
 </context>
 <context>
@@ -1990,8 +1990,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Jumbucks address</source>
-        <translation>Podpišite sporočilo, kot dokazilo lastništva Jumbucks naslova</translation>
+        <source>Sign the message to prove you own this Genstake address</source>
+        <translation>Podpišite sporočilo, kot dokazilo lastništva Genstake naslova</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2022,8 +2022,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Jumbucks address</source>
-        <translation>Potrdite sporočilo, da zagotovite, da je bilo podpisano z izbranim Jumbucks naslovom</translation>
+        <source>Verify the message to ensure it was signed with the specified Genstake address</source>
+        <translation>Potrdite sporočilo, da zagotovite, da je bilo podpisano z izbranim Genstake naslovom</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2033,8 +2033,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Vnesite Jumbucks naslov (npr. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Vnesite Genstake naslov (npr. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2043,8 +2043,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Jumbucks signature</source>
-        <translation>Vnesite Jumbucks podpis</translation>
+        <source>Enter Genstake signature</source>
+        <translation>Vnesite Genstake podpis</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2614,8 +2614,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>Jumbucks version</source>
-        <translation>Jumbucks različica</translation>
+        <source>Genstake version</source>
+        <translation>Genstake različica</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2624,8 +2624,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or jumbucksd</source>
-        <translation>Pošlji ukaz na -server ali jumbucksd</translation>
+        <source>Send command to -server or genstaked</source>
+        <translation>Pošlji ukaz na -server ali genstaked</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2644,13 +2644,13 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: jumbucks.conf)</source>
-        <translation>Določi konfiguracijsko datoteko (privzeto: jumbucks.conf)</translation>
+        <source>Specify configuration file (default: genstake.conf)</source>
+        <translation>Določi konfiguracijsko datoteko (privzeto: genstake.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: jumbucksd.pid)</source>
-        <translation>Določi pid datoteko (privzeto: jumbucksd.pid)</translation>
+        <source>Specify pid file (default: genstaked.pid)</source>
+        <translation>Določi pid datoteko (privzeto: genstaked.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2799,8 +2799,8 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Jumbucks will not work properly.</source>
-        <translation>Opozorilo: Prosimo preverite svoj datum in čas svojega računalnika! Če je vaša ura nastavljena napačno Jumbucks ne bo deloval.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Genstake will not work properly.</source>
+        <translation>Opozorilo: Prosimo preverite svoj datum in čas svojega računalnika! Če je vaša ura nastavljena napačno Genstake ne bo deloval.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -2989,24 +2989,24 @@ Ta oznaka se obarva rdeče, če je prioriteta manjša kot &quot;srednja&quot;.
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=jumbucksrpc
+rpcuser=genstakerpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Genstake Alert&quot; admin@foo.com
 </source>
         <translation>%s, nastaviti morate rpcgeslo v konfiguracijski datoteki: 
  %s
 Priporočeno je, da uporabite naslednje naključno geslo:
-rpcuser=jumbucksrpc
+rpcuser=genstakerpc
 rpcpassword=%s
 (tega gesla si vam ni potrebno zapomniti)
 Uporabniško ime in geslo NE SMETA biti ista. 
 Če datoteka ne obstaja, jo ustvarite z lastniškimi dovoljenji za datoteke. 
 Prav tako je priporočeno, da nastavite alernotify, tkako da vas opozori na probleme;
-na primer: alertnotify=echo %%s | mail -s &quot;Jumbucks Alarm&quot; admin@foo.com
+na primer: alertnotify=echo %%s | mail -s &quot;Genstake Alarm&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -3131,13 +3131,13 @@ na primer: alertnotify=echo %%s | mail -s &quot;Jumbucks Alarm&quot; admin@foo.c
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  Jumbucks is probably already running.</source>
-        <translation>Ni bilo mogoče najti podatkovnega imenika %s. Aplikacija Jumbucks je verjetno že zagnana.</translation>
+        <source>Cannot obtain a lock on data directory %s.  Genstake is probably already running.</source>
+        <translation>Ni bilo mogoče najti podatkovnega imenika %s. Aplikacija Genstake je verjetno že zagnana.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>Jumbucks</source>
-        <translation>Jumbucks</translation>
+        <source>Genstake</source>
+        <translation>Genstake</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3171,13 +3171,13 @@ na primer: alertnotify=echo %%s | mail -s &quot;Jumbucks Alarm&quot; admin@foo.c
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Jumbucks</source>
-        <translation>Napaka pri nalaganju wallet.dat: denarnica zahteva novejšo verzijo Jumbucks</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Genstake</source>
+        <translation>Napaka pri nalaganju wallet.dat: denarnica zahteva novejšo verzijo Genstake</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart Jumbucks to complete</source>
-        <translation>Denarnica mora biti prepisana: ponovno odprite Jumbucks za dokončanje</translation>
+        <source>Wallet needed to be rewritten: restart Genstake to complete</source>
+        <translation>Denarnica mora biti prepisana: ponovno odprite Genstake za dokončanje</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3246,8 +3246,8 @@ na primer: alertnotify=echo %%s | mail -s &quot;Jumbucks Alarm&quot; admin@foo.c
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. Jumbucks is probably already running.</source>
-        <translation>Navezava v %s  na tem računalniku ni mogoča Jumbucks aplikacija je verjetno že zagnana.</translation>
+        <source>Unable to bind to %s on this computer. Genstake is probably already running.</source>
+        <translation>Navezava v %s  na tem računalniku ni mogoča Genstake aplikacija je verjetno že zagnana.</translation>
     </message>
     <message>
         <location line="-97"/>

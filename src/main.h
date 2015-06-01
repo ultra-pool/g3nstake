@@ -35,8 +35,6 @@ static const unsigned int MAX_INV_SZ = 50000;
 static const int64_t MIN_TX_FEE = 10000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64_t MAX_MONEY = 2000000000 * COIN;
-static const int64_t COIN_YEAR_REWARD = 8 * CENT; // 8% per year
-static const int64_t MAX_STAKE_BLOCK_REWARD = 4;
 static const int64_t YEARLY_BLOCKCOUNT = 525600;  // 60 * 24 * 365
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
@@ -44,8 +42,8 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
 
-static const uint256 hashGenesisBlock("0x0000018b17ebb6160e2ce6162b68c7a63ad5fd146d376e7c976ed41b614ce692");
-static const uint256 hashGenesisBlockTestNet("0x00005b6110f2df5b61a80ec1e3fdad1a616236eca0be69c256b3c59044c031a3");
+static const uint256 hashGenesisBlock("0x000004d79c74dbd28423cfce1b52500df5cd3d19f9886be35dad6f1a36b11bb2");
+static const uint256 hashGenesisBlockTestNet("0x000004d79c74dbd28423cfce1b52500df5cd3d19f9886be35dad6f1a36b11bb2");
 
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - 10 * 60; } // up to 10 minutes from the past
@@ -58,6 +56,7 @@ extern std::set<std::pair<COutPoint, unsigned int> > setStakeSeen;
 extern CBlockIndex* pindexGenesisBlock;
 extern unsigned int nTargetSpacing;
 extern unsigned int nStakeMinAge;
+extern unsigned int nStakeMaxAge;
 extern unsigned int nNodeLifespan;
 extern int nCoinbaseMaturity;
 extern int nBestHeight;
@@ -118,9 +117,6 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan);
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake);
 void StakeMiner(CWallet *pwallet);
 void ResendWalletTransactions(bool fForce = false);
-
-
-
 
 
 

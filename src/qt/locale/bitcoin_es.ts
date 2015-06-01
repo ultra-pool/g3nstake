@@ -3,24 +3,24 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Jumbucks</source>
-        <translation>Acerca de Jumbucks</translation>
+        <source>About Genstake</source>
+        <translation>Acerca de Genstake</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Jumbucks&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Jumbucks&lt;/b&gt; versión</translation>
+        <source>&lt;b&gt;Genstake&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Genstake&lt;/b&gt; versión</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2014 The BlackCoin developers
-Copyright © 2014-2015 The Jumbucks developers</source>
+Copyright © 2014-2015 The Genstake developers</source>
         <translation>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2014 The BlackCoin developers
-Copyright © 2014-2015 The Jumbucks developers</translation>
+Copyright © 2014-2015 The Genstake developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -70,8 +70,8 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your Jumbucks addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Estas son las direcciones de Jumbucks para recibir pagos. Es posible que desee dar una diferente a cada remitente para que pueda realizar un seguimiento de quien te está pagando.</translation>
+        <source>These are your Genstake addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Estas son las direcciones de Genstake para recibir pagos. Es posible que desee dar una diferente a cada remitente para que pueda realizar un seguimiento de quien te está pagando.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -85,8 +85,8 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Jumbucks address</source>
-        <translation>Firmar un mensaje para demostrar que es dueño de su dirección de Jumbucks</translation>
+        <source>Sign a message to prove you own a Genstake address</source>
+        <translation>Firmar un mensaje para demostrar que es dueño de su dirección de Genstake</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -100,8 +100,8 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified Jumbucks address</source>
-        <translation>Verifique el mensaje para asegurarse que fue firmado por una dirección específica de Jumbucks</translation>
+        <source>Verify a message to ensure it was signed with a specified Genstake address</source>
+        <translation>Verifique el mensaje para asegurarse que fue firmado por una dirección específica de Genstake</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -268,8 +268,8 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="-58"/>
-        <source>Jumbucks will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>Jumbucks cerrará para terminar el proceso de encriptación. Recuerde que la encriptación de su monedero no puede proteger completamente que sus monedas sean robadas por malware infectando su computadora.</translation>
+        <source>Genstake will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>Genstake cerrará para terminar el proceso de encriptación. Recuerde que la encriptación de su monedero no puede proteger completamente que sus monedas sean robadas por malware infectando su computadora.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -382,8 +382,8 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Jumbucks</source>
-        <translation>Mostrar información sobre Jumbucks</translation>
+        <source>Show information about Genstake</source>
+        <translation>Mostrar información sobre Genstake</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -432,13 +432,13 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="-62"/>
-        <source>Send coins to a Jumbucks address</source>
-        <translation>Enviar monedas a una dirección de Jumbucks</translation>
+        <source>Send coins to a Genstake address</source>
+        <translation>Enviar monedas a una dirección de Genstake</translation>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for Jumbucks</source>
-        <translation>Modificar las opciones de configuración para Jumbucks</translation>
+        <source>Modify configuration options for Genstake</source>
+        <translation>Modificar las opciones de configuración para Genstake</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -477,8 +477,8 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="-200"/>
-        <source>Jumbucks</source>
-        <translation>Jumbucks</translation>
+        <source>Genstake</source>
+        <translation>Genstake</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -487,8 +487,8 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="+178"/>
-        <source>&amp;About Jumbucks</source>
-        <translation>Acerca de Jumbucks</translation>
+        <source>&amp;About Genstake</source>
+        <translation>Acerca de Genstake</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -544,13 +544,13 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>Jumbucks client</source>
-        <translation>Cliente Jumbucks</translation>
+        <source>Genstake client</source>
+        <translation>Cliente Genstake</translation>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to Jumbucks network</source>
-        <translation><numerusform>%n conexión activa a la red Jumbucks</numerusform><numerusform>%n conexiones activas a la red Jumbucks</numerusform></translation>
+        <source>%n active connection(s) to Genstake network</source>
+        <translation><numerusform>%n conexión activa a la red Genstake</numerusform><numerusform>%n conexiones activas a la red Genstake</numerusform></translation>
     </message>
     <message>
         <location line="+40"/>
@@ -664,8 +664,8 @@ Dirección: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid Jumbucks address or malformed URI parameters.</source>
-        <translation>URI no se puede analizar! Esto puede ser causado por una dirección de Jumbucks no válida o parámetros de URI malformados.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Genstake address or malformed URI parameters.</source>
+        <translation>URI no se puede analizar! Esto puede ser causado por una dirección de Genstake no válida o parámetros de URI malformados.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -724,8 +724,8 @@ Dirección: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. Jumbucks can no longer continue safely and will quit.</source>
-        <translation>Se ha producido un error fatal. Jumbucks ya no puede continuar de forma segura y cerrará.</translation>
+        <source>A fatal error occurred. Genstake can no longer continue safely and will quit.</source>
+        <translation>Se ha producido un error fatal. Genstake ya no puede continuar de forma segura y cerrará.</translation>
     </message>
 </context>
 <context>
@@ -1058,8 +1058,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Jumbucks address.</source>
-        <translation>La dirección introducida &quot;%1&quot; no es una dirección válida de Jumbucks.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Genstake address.</source>
+        <translation>La dirección introducida &quot;%1&quot; no es una dirección válida de Genstake.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1077,8 +1077,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>Jumbucks-Qt</source>
-        <translation>Jumbucks-Qt</translation>
+        <source>Genstake-Qt</source>
+        <translation>Genstake-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1150,13 +1150,13 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Jumbucks after logging in to the system.</source>
-        <translation>Iniciar Jumbucks automáticamente después de entrar en el sistema.</translation>
+        <source>Automatically start Genstake after logging in to the system.</source>
+        <translation>Iniciar Genstake automáticamente después de entrar en el sistema.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Jumbucks on system login</source>
-        <translation>&amp;Iniciar Jumbucks al inicio del sistema</translation>
+        <source>&amp;Start Genstake on system login</source>
+        <translation>&amp;Iniciar Genstake al inicio del sistema</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1175,8 +1175,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Jumbucks client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automáticamente el puerto de cliente Jumbucks en el router. Esto sólo funciona cuando el router es compatible con UPnP y está habilitado.</translation>
+        <source>Automatically open the Genstake client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir automáticamente el puerto de cliente Genstake en el router. Esto sólo funciona cuando el router es compatible con UPnP y está habilitado.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1185,8 +1185,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Jumbucks network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Conéctese a la red de Jumbucks a través de un SOCKS proxy (e.g. cuando se conecta a través de Tor)</translation>
+        <source>Connect to the Genstake network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Conéctese a la red de Genstake a través de un SOCKS proxy (e.g. cuando se conecta a través de Tor)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1260,8 +1260,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Jumbucks.</source>
-        <translation>El idioma del interfaz de usuario se puede configurar aquí. Esta configuración se aplicará después de reiniciar Jumbucks.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Genstake.</source>
+        <translation>El idioma del interfaz de usuario se puede configurar aquí. Esta configuración se aplicará después de reiniciar Genstake.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1275,8 +1275,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Jumbucks addresses in the transaction list or not.</source>
-        <translation>Tanto para mostrar direcciones de Jumbucks en la lista de transacciones o no.</translation>
+        <source>Whether to show Genstake addresses in the transaction list or not.</source>
+        <translation>Tanto para mostrar direcciones de Genstake en la lista de transacciones o no.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1322,8 +1322,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Jumbucks.</source>
-        <translation>Esta configuración se aplicará después de reiniciar Jumbucks.</translation>
+        <source>This setting will take effect after restarting Genstake.</source>
+        <translation>Esta configuración se aplicará después de reiniciar Genstake.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1341,8 +1341,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Jumbucks network after a connection is established, but this process has not completed yet.</source>
-        <translation>La información mostrada puede estar fuera de fecha. Su monedera se sincroniza automáticamente con la red Jumbucks después de que se establece una conexión, pero este proceso no se ha completado todavía.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Genstake network after a connection is established, but this process has not completed yet.</source>
+        <translation>La información mostrada puede estar fuera de fecha. Su monedera se sincroniza automáticamente con la red Genstake después de que se establece una conexión, pero este proceso no se ha completado todavía.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1557,8 +1557,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Jumbucks-Qt help message to get a list with possible Jumbucks command-line options.</source>
-        <translation>Mostrar el mensaje de ayuda de Jumbucks-Qt para obtener una lista con las posibles opciones de línea de comandos para Jumbucks.</translation>
+        <source>Show the Genstake-Qt help message to get a list with possible Genstake command-line options.</source>
+        <translation>Mostrar el mensaje de ayuda de Genstake-Qt para obtener una lista con las posibles opciones de línea de comandos para Genstake.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1577,13 +1577,13 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>Jumbucks - Debug window</source>
-        <translation>Jumbucks - Ventana de depuración</translation>
+        <source>Genstake - Debug window</source>
+        <translation>Genstake - Ventana de depuración</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Jumbucks Core</source>
-        <translation>Núcleo Jumbucks</translation>
+        <source>Genstake Core</source>
+        <translation>Núcleo Genstake</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1592,8 +1592,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Jumbucks debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Abre el archivo de registro de Jumbucks del directorio de datos actual. Esto puede tardar algunos segundos para archivos grandes.</translation>
+        <source>Open the Genstake debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Abre el archivo de registro de Genstake del directorio de datos actual. Esto puede tardar algunos segundos para archivos grandes.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1602,8 +1602,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the Jumbucks RPC console.</source>
-        <translation>Bienvenido a la consola RPC de Jumbucks</translation>
+        <source>Welcome to the Genstake RPC console.</source>
+        <translation>Bienvenido a la consola RPC de Genstake</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1676,8 +1676,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
         <location line="+86"/>
         <location line="+86"/>
         <location line="+32"/>
-        <source>0.00 JBS</source>
-        <translation>123.456 JBS {0.00 ?}</translation>
+        <source>0.00 GEN</source>
+        <translation>123.456 GEN {0.00 ?}</translation>
     </message>
     <message>
         <location line="-191"/>
@@ -1746,8 +1746,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>123.456 JBS</source>
-        <translation>123.456 JBS</translation>
+        <source>123.456 GEN</source>
+        <translation>123.456 GEN</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1761,8 +1761,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Introduce una dirección Jumbucks (p.ej. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Introduce una dirección Genstake (p.ej. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1861,8 +1861,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid Jumbucks address</source>
-        <translation>ADVERTENCIA: Dirección Jumbucks inválida</translation>
+        <source>WARNING: Invalid Genstake address</source>
+        <translation>ADVERTENCIA: Dirección Genstake inválida</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1935,8 +1935,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Introduce una dirección Jumbucks (p.ej. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Introduce una dirección Genstake (p.ej. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
 </context>
 <context>
@@ -1996,8 +1996,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Jumbucks address</source>
-        <translation>Firma el mensaje para demostrar que posees esta dirección Jumbucks.</translation>
+        <source>Sign the message to prove you own this Genstake address</source>
+        <translation>Firma el mensaje para demostrar que posees esta dirección Genstake.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2028,8 +2028,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Jumbucks address</source>
-        <translation>Verifique el mensaje para asegurarse de que se firmó con la dirección Jumbucks especificada.</translation>
+        <source>Verify the message to ensure it was signed with the specified Genstake address</source>
+        <translation>Verifique el mensaje para asegurarse de que se firmó con la dirección Genstake especificada.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2039,8 +2039,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Jumbucks address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Introduce una dirección Jumbucks (p.ej JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Introduce una dirección Genstake (p.ej JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2049,8 +2049,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Jumbucks signature</source>
-        <translation>Introduce la firma Jumbucks</translation>
+        <source>Enter Genstake signature</source>
+        <translation>Introduce la firma Genstake</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2620,8 +2620,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>Jumbucks version</source>
-        <translation>versión Jumbucks</translation>
+        <source>Genstake version</source>
+        <translation>versión Genstake</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2630,8 +2630,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or jumbucksd</source>
-        <translation>Envía un comando a -server o jumbucksd</translation>
+        <source>Send command to -server or genstaked</source>
+        <translation>Envía un comando a -server o genstaked</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2653,13 +2653,13 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: jumbucks.conf)</source>
-        <translation>Especifica un archivo de configuración (por defecto: jumbucks.conf)</translation>
+        <source>Specify configuration file (default: genstake.conf)</source>
+        <translation>Especifica un archivo de configuración (por defecto: genstake.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: jumbucksd.pid)</source>
-        <translation>Especifica un archivo pid (por defecto: jumbucksd.pid)</translation>
+        <source>Specify pid file (default: genstaked.pid)</source>
+        <translation>Especifica un archivo pid (por defecto: genstaked.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2811,8 +2811,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Jumbucks will not work properly.</source>
-        <translation>Advertencia: Verifique que la fecha y hora del equipo sean correctas! Si su reloj es erróneo Jumbucks no funcionará correctamente.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Genstake will not work properly.</source>
+        <translation>Advertencia: Verifique que la fecha y hora del equipo sean correctas! Si su reloj es erróneo Genstake no funcionará correctamente.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -3002,24 +3002,24 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=jumbucksrpc
+rpcuser=genstakerpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Genstake Alert&quot; admin@foo.com
 </source>
         <translation>%s, debe establecer un rpcpassword en el fichero de configuración:
 %s
 Se recomienda utilizar la siguiente contraseña aleatoria:
-rpcuser=jumbucksrpc
+rpcuser=genstakerpc
 rpcpassword=%s
 (no necesita recordar este password)
 El nombre de usuario y contraseña no debe ser el mismo.
 Si no existe el archivo, créelo con permisos de sólo lectura para el dueño.
 También se recomienda establecer alertnotify para ser notificado de los problemas;
-por ejemplo: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo.com
+por ejemplo: alertnotify=echo %%s | mail -s &quot;Genstake Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -3151,13 +3151,13 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  Jumbucks is probably already running.</source>
-        <translation>No se puede obtener un bloqueo en el directorio de datos %s. Jumbucks probablemente ya esté en funcionamiento.</translation>
+        <source>Cannot obtain a lock on data directory %s.  Genstake is probably already running.</source>
+        <translation>No se puede obtener un bloqueo en el directorio de datos %s. Genstake probablemente ya esté en funcionamiento.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>Jumbucks</source>
-        <translation>Jumbucks</translation>
+        <source>Genstake</source>
+        <translation>Genstake</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3191,13 +3191,13 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Jumbucks</source>
-        <translation>Error cargando wallet.dat: El monedero requiere una nueva versión de Jumbucks</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Genstake</source>
+        <translation>Error cargando wallet.dat: El monedero requiere una nueva versión de Genstake</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart Jumbucks to complete</source>
-        <translation>El monedero necesita ser reescrito: reinicie Jumbucks para completar</translation>
+        <source>Wallet needed to be rewritten: restart Genstake to complete</source>
+        <translation>El monedero necesita ser reescrito: reinicie Genstake para completar</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3266,8 +3266,8 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;Jumbucks Alert&quot; admin@foo
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. Jumbucks is probably already running.</source>
-        <translation>No se puede enlazar a %s en este equipo. Jumbucks probablemente ya esté en funcionamiento.</translation>
+        <source>Unable to bind to %s on this computer. Genstake is probably already running.</source>
+        <translation>No se puede enlazar a %s en este equipo. Genstake probablemente ya esté en funcionamiento.</translation>
     </message>
     <message>
         <location line="-97"/>
