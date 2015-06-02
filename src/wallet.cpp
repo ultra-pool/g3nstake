@@ -2372,7 +2372,21 @@ bool CWallet::GetStakeWeight(const CKeyStore& keystore, uint64_t& nMinWeight, ui
         }
 
         int64_t nTimeWeight = GetWeight((int64_t)pcoin.first->nTime, (int64_t)GetTime());
-        CBigNum bnCoinDayWeight = CBigNum(pcoin.first->vout[pcoin.second].nValue) * nTimeWeight / COIN / (24 * 60 * 60);
+        // CBigNum bnCoinDayWeight = CBigNum(pcoin.first->vout[pcoin.second].nValue) * nTimeWeight / COIN / (24 * 60 * 60);
+
+
+        int64_t bnCoinDayWeight_Calc;
+
+        //  Add accumulated weight to .9 so coins are eligible to stake sooner. Boost coin weight 1000x
+
+        int nDayTime = 24 * 60 * 60; // Length of a Day
+        int nWeightFactor;          // Adjust Weight
+        nWeightFactor = 1000;         // 100x normal weight
+        int64_t nDivideBase = nDayTime * COIN / nWeightFactor; // For dividing out COIN and day length and increasing weight factor
+        bnCoinDayWeight_Calc = (9 + (10 * pcoin.first->vout[pcoin.second].nValue * nTimeWeight / nDivideBase)) / 10; // Dirty Hack to allow weight to accumulate from .9
+
+
+        CBigNum bnCoinDayWeight = CBigNum(bnCoinDayWeight_Calc);
 
         // Weight is greater than zero
         if (nTimeWeight > 0)
