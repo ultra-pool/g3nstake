@@ -36,13 +36,13 @@ map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 
 CBigNum bnProofOfWorkLimit(~uint256(0) >> 20);      // "standard" scrypt target limit for proof of work, results with 0,000244140625 proof-of-work difficulty
-CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
+CBigNum bnProofOfStakeLimit(~uint256(0) >> 12);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nTargetSpacing     = 60;               // 60 seconds
 unsigned int nStakeMinAge       = 1 * 60 * 60;      // 1 hour
 unsigned int nStakeMaxAge       = 24 * 60 * 60 * 30; // 30 days
-unsigned int nModifierInterval  = 10 * 60;          // time to elapse before new modifier is computed
+unsigned int nModifierInterval  = 5 * 60;          // time to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 20;
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -2047,9 +2047,6 @@ bool CBlock::AcceptBlock()
     CBlockIndex* pindexPrev = (*mi).second;
     int nHeight = pindexPrev->nHeight+1;
 
-    if (IsProofOfWork() && nHeight > LAST_POW_BLOCK)
-        return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
-
     // Check proof-of-work or proof-of-stake
     if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
         return DoS(100, error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
@@ -2435,7 +2432,7 @@ bool LoadBlockIndex(bool fAllowNew)
 
         const char* pszTimestamp = "Bernie Sanders for President.";
         CTransaction txNew;
-        txNew.nTime = 1433058941;
+        txNew.nTime = 1433270743;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2446,12 +2443,12 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1433058941;
+        block.nTime    = 1433270743;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 4016535;
-        
+        block.nNonce   = 174553;
+
         //// debug print
-        assert(block.hashMerkleRoot == uint256("0xfb2e47f5ff9c7b63c0cc3011cb1878983c64eccd07bbce33da27d39d71440ae7"));
+        assert(block.hashMerkleRoot == uint256("0990a9b1eeda46cbc58e152b3e539cddd65391fb61dc7e83ed6c108c9f5527bb"));
         block.print();
         assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
         assert(block.CheckBlock());

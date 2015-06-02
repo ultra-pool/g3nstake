@@ -24,9 +24,6 @@ class CAddress;
 class CInv;
 class CNode;
 
-static const int LAST_POW_BLOCK = 31000;
-static const int LAST_FAIR_LAUNCH_BLOCK = 120;
-
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
@@ -34,7 +31,7 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int MAX_INV_SZ = 50000;
 static const int64_t MIN_TX_FEE = 10000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
-static const int64_t MAX_MONEY = 2000000000 * COIN;
+static const int64_t MAX_MONEY = 15000000 * COIN;
 static const int64_t YEARLY_BLOCKCOUNT = 525600;  // 60 * 24 * 365
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
@@ -42,8 +39,8 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
 
-static const uint256 hashGenesisBlock("0x000004d79c74dbd28423cfce1b52500df5cd3d19f9886be35dad6f1a36b11bb2");
-static const uint256 hashGenesisBlockTestNet("0x000004d79c74dbd28423cfce1b52500df5cd3d19f9886be35dad6f1a36b11bb2");
+static const uint256 hashGenesisBlock("0x00000b98b117248cc54f5d44dc4c43a1b38dfc77b663610c6345464e338a4d7e");
+static const uint256 hashGenesisBlockTestNet("0x00000b98b117248cc54f5d44dc4c43a1b38dfc77b663610c6345464e338a4d7e");
 
 
 inline int64_t PastDrift(int64_t nTime)   { return nTime - 10 * 60; } // up to 10 minutes from the past
