@@ -969,7 +969,10 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 {
     int64_t nSubsidy = 0;
     
-    if (nHeight > 0)
+    if (nHeight == 1)
+        nSubsidy = 1000 * COIN; // 1000 Coin Premine.
+
+    if (nHeight > 1)
         nSubsidy = COIN / (1 + (nHeight / YEARLY_BLOCKCOUNT));
 
     if (fDebug && GetBoolArg("-printcreation"))
