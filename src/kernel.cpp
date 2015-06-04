@@ -129,8 +129,13 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexPrev, uint64_t& nStakeMod
         return true;
 
     // Sort candidate blocks by timestamp
+
+    int nProofs = 1;
+    if (pindexBest->nHeight > 86400) // 2 months worth of blocks, should only take a month because of current rate
+        nProofs = 2; // Increase the spacing to account for the number of Proof-Of's being used.
+
     vector<pair<int64_t, uint256> > vSortedByTimestamp;
-    vSortedByTimestamp.reserve(64 * nModifierInterval / nTargetSpacing);
+    vSortedByTimestamp.reserve(64 * nModifierInterval / (nTargetSpacing * nProofs));
     int64_t nSelectionInterval = GetStakeModifierSelectionInterval();
     int64_t nSelectionIntervalStart = (pindexPrev->GetBlockTime() / nModifierInterval) * nModifierInterval - nSelectionInterval;
     const CBlockIndex* pindex = pindexPrev;

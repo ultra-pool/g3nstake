@@ -75,9 +75,13 @@ Value getstakinginfo(const Array& params, bool fHelp)
     uint64_t nMinWeight = 0, nMaxWeight = 0, nWeight = 0;
     pwalletMain->GetStakeWeight(*pwalletMain, nMinWeight, nMaxWeight, nWeight);
 
+    int nProofs = 1;
+    if (pindexBest->nHeight > 86400) // 2 months worth of blocks, should only take a month because of current rate
+        nProofs = 2; // Increase the spacing to account for the number of Proof-Of's being used.
+
     uint64_t nNetworkWeight = GetPoSKernelPS();
     bool staking = nLastCoinStakeSearchInterval && nWeight;
-    int nExpectedTime = staking ? (nTargetSpacing * nNetworkWeight / nWeight) : -1;
+    int nExpectedTime = staking ? ((nTargetSpacing * nProofs) * nNetworkWeight / nWeight) : -1;
 
     Object obj;
 

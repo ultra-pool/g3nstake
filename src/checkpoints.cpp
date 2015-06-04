@@ -190,9 +190,13 @@ namespace Checkpoints
     // Automatically select a suitable sync-checkpoint 
     uint256 AutoSelectSyncCheckpoint()
     {
+        int nProofs = 1;
+        if (pindexBest->nHeight > 86400) // 2 months worth of blocks, should only take a month because of current rate
+            nProofs = 2; // Increase the spacing to account for the number of Proof-Of's being used.
+
         const CBlockIndex *pindex = pindexBest;
         // Search backward for a block within max span and maturity window
-        while (pindex->pprev && (pindex->GetBlockTime() + nCheckpointSpan * nTargetSpacing > pindexBest->GetBlockTime() || pindex->nHeight + nCheckpointSpan > pindexBest->nHeight))
+        while (pindex->pprev && (pindex->GetBlockTime() + nCheckpointSpan * (nTargetSpacing * nProofs) > pindexBest->GetBlockTime() || pindex->nHeight + nCheckpointSpan > pindexBest->nHeight))
             pindex = pindex->pprev;
         return pindex->GetBlockHash();
     }
