@@ -1056,21 +1056,17 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
-    int nProofs = 1;
-    if (pindexBest->nHeight > 86400) // 2 months worth of blocks, should only take a month because of current rate
-        nProofs = 2; // Increase the spacing to account for the number of Proof-Of's being used.
-
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
     if (nActualSpacing < 0)
-        nActualSpacing = nTargetSpacing * nProofs;
+        nActualSpacing = nTargetSpacing;
 
     // ppcoin: target change every block
     // ppcoin: retarget with exponential moving toward target spacing
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
-    int64_t nInterval = nTargetTimespan / (nTargetSpacing * nProofs);
-    bnNew *= ((nInterval - 1) * (nTargetSpacing * nProofs) + nActualSpacing + nActualSpacing);
-    bnNew /= ((nInterval + 1) * (nTargetSpacing * nProofs));
+    int64_t nInterval = nTargetTimespan / nTargetSpacing;
+    bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
+    bnNew /= ((nInterval + 1) * nTargetSpacing);
 
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
