@@ -41,6 +41,7 @@ CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nTargetSpacing     = 60;               // 60 seconds
 unsigned int nStakeMinAge       = 1 * 60 * 60;      // 1 hour
+unsigned int nStakeMinAgeAdjusted = 4 * 60 * 60;    // 4 Hours after block 10000
 unsigned int nStakeMaxAge       = 24 * 60 * 60 * 30; // 30 days
 unsigned int nModifierInterval  = 5 * 60;          // time to elapse before new modifier is computed
 
@@ -975,6 +976,9 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
     if (nHeight > 1)
         nSubsidy = COIN / (1 + (nHeight / YEARLY_BLOCKCOUNT));
 
+    if (nHeight > 10000)
+        nSubsidy = 5 * COIN / (1 + (nHeight / YEARLY_BLOCKCOUNT));
+
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
 
@@ -1057,16 +1061,22 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
         return bnTargetLimit.GetCompact(); // second block
 
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
+
+    unsigned int nProof=1;
+
+    if (pindexBest->nHeight > 10000)
+        nProof=2;
+
     if (nActualSpacing < 0)
-        nActualSpacing = nTargetSpacing;
+        nActualSpacing = nTargetSpacing * nProof;
 
     // ppcoin: target change every block
     // ppcoin: retarget with exponential moving toward target spacing
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
-    int64_t nInterval = nTargetTimespan / nTargetSpacing;
-    bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
-    bnNew /= ((nInterval + 1) * nTargetSpacing);
+    int64_t nInterval = nTargetTimespan / (nTargetSpacing * nProof);
+    bnNew *= ((nInterval - 1) * (nTargetSpacing * nProof) + nActualSpacing + nActualSpacing);
+    bnNew /= ((nInterval + 1) * (nTargetSpacing * nProof));
 
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
@@ -1834,7 +1844,13 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const
         CBlock block;
         if (!block.ReadFromDisk(txindex.pos.nFile, txindex.pos.nBlockPos, false))
             return false; // unable to read block of previous transaction
-        if (block.GetBlockTime() + nStakeMinAge > nTime)
+
+        unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+
+        if (pindexBest->nHeight > 10000)
+            nStakeMinAgeCurrent = nStakeMinAgeAdjusted;
+
+        if (block.GetBlockTime() + nStakeMinAgeCurrent > nTime)
             continue; // only count coins meeting min age requirement
 
         int64_t nValueIn = txPrev.vout[txin.prevout.n].nValue;
@@ -3080,7 +3096,13 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 printf("  getblocks stopping at %d %s\n", pindex->nHeight, pindex->GetBlockHash().ToString().substr(0,20).c_str());
                 // ppcoin: tell downloading node about the latest block if it's
                 // without risk being rejected due to stake connection check
-                if (hashStop != hashBestChain && pindex->GetBlockTime() + nStakeMinAge > pindexBest->GetBlockTime())
+
+                unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+
+                if (pindexBest->nHeight > 10000)
+                    nStakeMinAgeCurrent = nStakeMinAgeAdjusted;
+
+                if (hashStop != hashBestChain && pindex->GetBlockTime() + nStakeMinAgeCurrent > pindexBest->GetBlockTime())
                     pfrom->PushInventory(CInv(MSG_BLOCK, hashBestChain));
                 break;
             }

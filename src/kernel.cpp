@@ -16,7 +16,12 @@ int64_t GetWeight(int64_t nIntervalBeginning, int64_t nIntervalEnd)
     // this change increases active coins participating the hash and helps
     // to secure the network when proof-of-stake difficulty is low
 
-    return min(nIntervalEnd - nIntervalBeginning - nStakeMinAge, (int64_t)nStakeMaxAge);
+    unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+
+    if (pindexBest->nHeight > 10000)
+        nStakeMinAgeCurrent = nStakeMinAgeAdjusted;
+
+    return min(nIntervalEnd - nIntervalBeginning - nStakeMinAgeCurrent, (int64_t)nStakeMaxAge);
 }
 
 // Get the last stake modifier and its generation time from a given block
@@ -130,7 +135,13 @@ bool ComputeNextStakeModifier(const CBlockIndex* pindexPrev, uint64_t& nStakeMod
 
     // Sort candidate blocks by timestamp
     vector<pair<int64_t, uint256> > vSortedByTimestamp;
-    vSortedByTimestamp.reserve(64 * nModifierInterval / nTargetSpacing);
+
+    unsigned int nProof=1;
+
+    if (pindexBest->nHeight > 10000)
+        nProof=2;
+
+    vSortedByTimestamp.reserve(64 * nModifierInterval / (nTargetSpacing * nProof));
     int64_t nSelectionInterval = GetStakeModifierSelectionInterval();
     int64_t nSelectionIntervalStart = (pindexPrev->GetBlockTime() / nModifierInterval) * nModifierInterval - nSelectionInterval;
     const CBlockIndex* pindex = pindexPrev;
@@ -212,7 +223,12 @@ static bool GetKernelStakeModifier(uint256 hashBlockFrom, uint64_t& nStakeModifi
     {
         if (!pindex->pnext)
         {   // reached best block; may happen if node is behind on block chain
-            if (fPrintProofOfStake || (pindex->GetBlockTime() + nStakeMinAge - nStakeModifierSelectionInterval > GetAdjustedTime()))
+            unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+
+            if (pindexBest->nHeight > 10000)
+                nStakeMinAgeCurrent = nStakeMinAgeAdjusted;
+
+            if (fPrintProofOfStake || (pindex->GetBlockTime() + nStakeMinAgeCurrent - nStakeModifierSelectionInterval > GetAdjustedTime()))
                 return error("GetKernelStakeModifier() : reached best block %s at height %d from block %s",
                     pindex->GetBlockHash().ToString().c_str(), pindex->nHeight, hashBlockFrom.ToString().c_str());
             else
@@ -256,7 +272,12 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned 
         return error("CheckStakeKernelHash() : nTime violation");
 
     unsigned int nTimeBlockFrom = blockFrom.GetBlockTime();
-    if (nTimeBlockFrom + nStakeMinAge > nTimeTx) // Min age requirement
+    unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+
+    if (pindexBest->nHeight > 10000)
+        nStakeMinAgeCurrent = nStakeMinAgeAdjusted;
+
+    if (nTimeBlockFrom + nStakeMinAgeCurrent > nTimeTx) // Min age requirement
         return error("CheckStakeKernelHash() : min age violation");
 
     CBigNum bnTargetPerCoinDay;
@@ -269,6 +290,10 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock& blockFrom, unsigned 
     //  Add accumulated weight to .9 so coins are eligible to stake sooner. Boost coin weight 100x
     int nDayTime = 24 * 60 * 60; // Length of a Day
     int nWeightFactor = 100;
+
+    if (pindexBest->nHeight > 10000)
+        nWeightFactor = 1;
+
     int64_t nDivideBase = nDayTime * COIN / nWeightFactor; // For dividing out COIN and day length and increasing weight factor
     bnCoinDayWeight_Calc = (9 + (10 * nValueIn * GetWeight((int64_t)txPrev.nTime, (int64_t)nTimeTx) / nDivideBase)) / 10; // Dirty Hack to allow weight to begin at .9
 

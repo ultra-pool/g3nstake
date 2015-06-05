@@ -192,7 +192,13 @@ namespace Checkpoints
     {
         const CBlockIndex *pindex = pindexBest;
         // Search backward for a block within max span and maturity window
-        while (pindex->pprev && (pindex->GetBlockTime() + nCheckpointSpan * nTargetSpacing > pindexBest->GetBlockTime() || pindex->nHeight + nCheckpointSpan > pindexBest->nHeight))
+
+        unsigned int nProof=1;
+
+        if (pindexBest->nHeight > 10000)
+            nProof=2;
+
+        while (pindex->pprev && (pindex->GetBlockTime() + nCheckpointSpan * (nTargetSpacing * nProof) > pindexBest->GetBlockTime() || pindex->nHeight + nCheckpointSpan > pindexBest->nHeight))
             pindex = pindex->pprev;
         return pindex->GetBlockHash();
     }
@@ -346,12 +352,18 @@ namespace Checkpoints
     // Is the sync-checkpoint outside maturity window?
     bool IsMatureSyncCheckpoint()
     {
+
+        unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+
+        if (pindexBest->nHeight > 10000)
+            nStakeMinAgeCurrent = nStakeMinAgeAdjusted;
+
         LOCK(cs_hashSyncCheckpoint);
         // sync-checkpoint should always be accepted block
         assert(mapBlockIndex.count(hashSyncCheckpoint));
         const CBlockIndex* pindexSync = mapBlockIndex[hashSyncCheckpoint];
         return (nBestHeight >= pindexSync->nHeight + nCoinbaseMaturity ||
-                pindexSync->GetBlockTime() + nStakeMinAge < GetAdjustedTime());
+                pindexSync->GetBlockTime() + nStakeMinAgeCurrent < GetAdjustedTime());
     }
 }
 
