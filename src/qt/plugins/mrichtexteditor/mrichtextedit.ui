@@ -432,7 +432,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="f_bgcolor">
+       <widget class="QToolButton" name="f_fgcolor">
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -516,7 +516,7 @@
      <zorder>f_indent_dec</zorder>
      <zorder>f_indent_inc</zorder>
      <zorder>f_bold</zorder>
-     <zorder>f_bgcolor</zorder>
+     <zorder>f_fgcolor</zorder>
      <zorder>f_strikeout</zorder>
      <zorder>line_6</zorder>
     </widget>

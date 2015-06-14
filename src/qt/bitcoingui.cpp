@@ -310,7 +310,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(addressBookAction);
 
     messageAction = new QAction(QIcon(":/icons/edit"), tr("&Messages"), this);
-    messageAction->setToolTip(tr("View and Send Encrypted messages"));
+    messageAction->setToolTip(tr("View and Send Private Messages"));
     messageAction->setCheckable(true);
     messageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     tabGroup->addAction(messageAction);
@@ -922,7 +922,7 @@ void BitcoinGUI::mainToolbarOrientation(Qt::Orientation orientation)
 {
     if(orientation == Qt::Horizontal)
     {
-        messageAction->setIconText(tr("Encrypted &Messages"));
+        messageAction->setIconText(tr("Private &Messages"));
     }
 }
 
