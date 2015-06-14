@@ -5,6 +5,7 @@
 #include "wallet.h"
 #include "base58.h"
 #include "stealth.h"
+#include "smessage.h"
 
 #include <QFont>
 #include <QColor>
@@ -22,11 +23,12 @@ struct AddressTableEntry
     Type type;
     QString label;
     QString address;
+    QString pmkey;
     bool stealth;
 
     AddressTableEntry() {}
-    AddressTableEntry(Type type, const QString &label, const QString &address, const bool &stealth = false):
-        type(type), label(label), address(address), stealth(stealth) {}
+    AddressTableEntry(Type type, const QString &label, const QString &address, const QString &pmkey, const bool &stealth = false):
+        type(type), label(label), address(address), pmkey(pmkey), stealth(stealth) {}
 };
 
 struct AddressTableEntryLessThan
@@ -66,9 +68,22 @@ public:
                 const CBitcoinAddress& address = item.first;
                 const std::string& strName = item.second;
                 bool fMine = IsMine(*wallet, address.Get());
+
+                std::string a;
+                std::string PMKey = "";
+                a = address.ToString();
+
+                if (fMine)
+                {
+                    int i = SecureMsgGetLocalPublicKey(a, PMKey);
+                    if (i)
+                        printf("Error getting PM Key \n");
+                }
+
                 cachedAddressTable.append(AddressTableEntry(fMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending,
                                   QString::fromStdString(strName),
-                                  QString::fromStdString(address.ToString())));
+                                  QString::fromStdString(address.ToString()),
+                                  QString::fromStdString(PMKey)));
             }
 
             std::set<CStealthAddress>::iterator it;
@@ -78,6 +93,7 @@ public:
                 cachedAddressTable.append(AddressTableEntry(fMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending,
                                   QString::fromStdString(it->label),
                                   QString::fromStdString(it->Encoded()),
+                                  QString::fromStdString(""),
                                   true));
             };
         }
@@ -100,15 +116,29 @@ public:
         switch(status)
         {
         case CT_NEW:
+        {
             if(inModel)
             {
                 OutputDebugStringF("Warning: AddressTablePriv::updateEntry: Got CT_NEW, but entry is already in model\n");
                 break;
             }
             parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex);
-            cachedAddressTable.insert(lowerIndex, AddressTableEntry(newEntryType, label, address));
+
+            std::string pmkey = "";
+            std::string a;
+            a = address.toStdString();
+            int i;
+            if (isMine)
+            {
+                i = SecureMsgGetLocalPublicKey(a, pmkey);
+                if (i)
+                    printf("Can't get PM Key for some reason\n");
+            }
+
+            cachedAddressTable.insert(lowerIndex, AddressTableEntry(newEntryType, label, address, QString::fromStdString(pmkey)));
             parent->endInsertRows();
             break;
+        }
         case CT_UPDATED:
             if(!inModel)
             {
@@ -153,7 +183,7 @@ public:
 AddressTableModel::AddressTableModel(CWallet *wallet, WalletModel *parent) :
     QAbstractTableModel(parent),walletModel(parent),wallet(wallet),priv(0)
 {
-    columns << tr("Label") << tr("Address");
+    columns << tr("Label") << tr("Address") << tr("PM Key");
     priv = new AddressTablePriv(wallet, this);
     priv->refreshAddressTable();
 }
@@ -197,6 +227,8 @@ QVariant AddressTableModel::data(const QModelIndex &index, int role) const
             }
         case Address:
             return rec->address;
+        case PMKey:
+            return rec->pmkey;
         }
     }
     else if (role == Qt::FontRole)

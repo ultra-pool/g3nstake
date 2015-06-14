@@ -137,11 +137,24 @@ void AddressBookPage::setModel(AddressTableModel *model)
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
 
+    bool sTab = true;
+    if (tab)
+        sTab = false;
+
     // Set column widths
+    ui->tableView->horizontalHeader()->resizeSection(
+            AddressTableModel::PMKey, 320);
+    ui->tableView->horizontalHeader()->setResizeMode(
+            AddressTableModel::PMKey, QHeaderView::Fixed);
+    ui->tableView->setColumnHidden(
+            AddressTableModel::PMKey, sTab);
     ui->tableView->horizontalHeader()->resizeSection(
             AddressTableModel::Address, 320);
     ui->tableView->horizontalHeader()->setResizeMode(
+            AddressTableModel::Address, QHeaderView::Fixed);
+    ui->tableView->horizontalHeader()->setResizeMode(
             AddressTableModel::Label, QHeaderView::Stretch);
+
 
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
@@ -188,11 +201,11 @@ void AddressBookPage::onCopyPMKeyAction()
 
     PMKey = QString::fromStdString(KeyString);
 
-    QString OutString;
+//    QString OutString;
 
-    OutString = "Address: " + Address + "\nPM Key:  " + PMKey;
+//    OutString = "Address: " + Address + "\nPM Key:  " + PMKey;
 
-    QApplication::clipboard()->setText(OutString);
+    QApplication::clipboard()->setText(PMKey);
 }
 
 void AddressBookPage::onCopyLabelAction()
@@ -363,6 +376,7 @@ void AddressBookPage::exportClicked()
     writer.setModel(proxyModel);
     writer.addColumn("Label", AddressTableModel::Label, Qt::EditRole);
     writer.addColumn("Address", AddressTableModel::Address, Qt::EditRole);
+    writer.addColumn("PM KEY", AddressTableModel::PMKey, Qt::EditRole);
 
     if(!writer.write())
     {
