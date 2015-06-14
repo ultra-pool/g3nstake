@@ -65,7 +65,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 snprintf(cbuf, sizeof(cbuf), "n_%u", nOut);
                 mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
                 if (mi != wtx.mapValue.end() && !mi->second.empty())
-                    sub.narration = mi->second;
+                    sub.note = mi->second;
                 
                 if (wtx.IsCoinBase())
                 {
@@ -119,17 +119,17 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             // Payment to self
             int64_t nChange = wtx.GetChange();
             
-            std::string narration("");
+            std::string note("");
             mapValue_t::const_iterator mi;
             for (mi = wtx.mapValue.begin(); mi != wtx.mapValue.end(); ++mi)
             {
                 if (mi->first.compare(0, 2, "n_") != 0)
                     continue;
-                narration = mi->second;
+                note = mi->second;
                 break;
             };
             
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "", narration,
+            parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "", note,
                             -(nDebit - nChange), nCredit - nChange));
         }
         else if (fAllFromMe)
@@ -176,7 +176,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 snprintf(cbuf, sizeof(cbuf), "n_%u", nOut);
                 mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
                 if (mi != wtx.mapValue.end() && !mi->second.empty())
-                    sub.narration = mi->second;
+                    sub.note = mi->second;
 
                 int64_t nValue = txout.nValue;
                 /* Add fee to first output */

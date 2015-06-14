@@ -1542,7 +1542,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                     // Insert change txn at random position:
                     vector<CTxOut>::iterator position = wtxNew.vout.begin()+GetRandInt(wtxNew.vout.size() + 1);
                     
-                    // -- don't put change output between value and narration outputs
+                    // -- don't put change output between value and note outputs
                     if (position > wtxNew.vout.begin() && position < wtxNew.vout.end())
                     {
                         while (position > wtxNew.vout.begin())
@@ -1618,12 +1618,12 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::strin
     }
     
     // -- CreateTransaction won't place change between value and narr output.
-    //    narration output will be for preceding output
+    //    note output will be for preceding output
     
     int nChangePos;
     bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
     
-    // -- narration will be added to mapValue later in FindStealthTransactions From CommitTransaction
+    // -- note will be added to mapValue later in FindStealthTransactions From CommitTransaction
     return rv;
 }
 
@@ -1961,7 +1961,7 @@ bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std
     
     vecSend.push_back(make_pair(scriptP, 0));
     
-    // -- shuffle inputs, change output won't mix enough as it must be not fully random for plantext narrations
+    // -- shuffle inputs, change output won't mix enough as it must be not fully random for plantext notes
     std::random_shuffle(vecSend.begin(), vecSend.end());
     
     int nChangePos;
@@ -1979,7 +1979,7 @@ bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std
             char key[64];
             if (snprintf(key, sizeof(key), "n_%u", k) < 1)
             {
-                printf("CreateStealthTransaction(): Error creating narration key.");
+                printf("CreateStealthTransaction(): Error creating note key.");
                 break;
             };
             wtxNew.mapValue[key] = sNarr;
@@ -2091,13 +2091,13 @@ bool CWallet::SendStealthMoneyToDestination(CStealthAddress& sxAddress, int64_t 
         
         if (!crypter.Encrypt((uint8_t*)&sNarr[0], sNarr.length(), vchNarr))
         {
-            sError = "Narration encryption failed.";
+            sError = "Note encryption failed.";
             return false;
         };
         
         if (vchNarr.size() > 48)
         {
-            sError = "Encrypted narration is too long.";
+            sError = "Encrypted note is too long.";
             return false;
         };
     };
@@ -2150,7 +2150,7 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
         if (!txout.scriptPubKey.GetOp(itTxA, opCode, vchEphemPK)
             || vchEphemPK.size() != 33)
         {
-            // -- look for plaintext narrations
+            // -- look for plaintext notes
             if (vchEphemPK.size() > 1
                 && vchEphemPK[0] == 'n'
                 && vchEphemPK[1] == 'p')
@@ -2162,11 +2162,11 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
                 {
                     std::string sNarr = std::string(vchENarr.begin(), vchENarr.end());
                     
-                    snprintf(cbuf, sizeof(cbuf), "n_%d", nOutputIdOuter-1); // plaintext narration always matches preceding value output
+                    snprintf(cbuf, sizeof(cbuf), "n_%d", nOutputIdOuter-1); // plaintext note always matches preceding value output
                     mapNarr[cbuf] = sNarr;
                 } else
                 {
-                    printf("Warning: FindStealthTransactions() tx: %s, Could not extract plaintext narration.\n", tx.GetHash().GetHex().c_str());
+                    printf("Warning: FindStealthTransactions() tx: %s, Could not extract plaintext note.\n", tx.GetHash().GetHex().c_str());
                 };
             }
             
@@ -2321,7 +2321,7 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
                     std::vector<uint8_t> vchNarr;
                     if (!crypter.Decrypt(&vchENarr[0], vchENarr.size(), vchNarr))
                     {
-                        printf("Decrypt narration failed.\n");
+                        printf("Decrypt note failed.\n");
                         continue;
                     };
                     std::string sNarr = std::string(vchNarr.begin(), vchNarr.end());
@@ -2750,7 +2750,7 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nV
         return _("Insufficient funds");
 
     if (sNarr.length() > 24)
-        return _("Narration must be 24 characters or less.");
+        return _("Note must be 24 characters or less.");
     
     // Parse Bitcoin address
     CScript scriptPubKey;

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>729</width>
-    <height>136</height>
+    <height>142</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -72,29 +72,26 @@
    <item row="5" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>N&amp;arration:</string>
+      <string>N&amp;ote:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
      <property name="buddy">
-      <cstring>narration</cstring>
+      <cstring>note</cstring>
      </property>
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="QValidatedLineEdit" name="narration">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="toolTip">
-        <string>Enter a short note to send with payment (max 24 characters)</string>
-       </property>
+    <widget class="QValidatedLineEdit" name="note">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="toolTip">
+      <string>Enter a short note to send with payment (max 24 characters)</string>
+     </property>
     </widget>
-    
    </item>
-   
-   
    <item row="4" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">

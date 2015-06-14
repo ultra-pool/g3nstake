@@ -228,7 +228,7 @@ TransactionTableModel::TransactionTableModel(CWallet* wallet, WalletModel *paren
         walletModel(parent),
         priv(new TransactionTablePriv(wallet, this))
 {
-    columns << QString() << tr("Date") << tr("Type") << tr("Address") << tr("Narration") << tr("Amount");
+    columns << QString() << tr("Date") << tr("Type") << tr("Address") << tr("Note") << tr("Amount");
 
     priv->refreshWallet();
 
@@ -397,9 +397,9 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord *wtx, b
     }
 }
 
-QString TransactionTableModel::formatNarration(const TransactionRecord *wtx) const
+QString TransactionTableModel::formatNote(const TransactionRecord *wtx) const
 {
-    return QString::fromStdString(wtx->narration);
+    return QString::fromStdString(wtx->note);
 }
 
 
@@ -510,8 +510,8 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
             return formatTxType(rec);
         case ToAddress:
             return formatTxToAddress(rec, false);
-        case Narration:
-            return formatNarration(rec);
+        case Note:
+            return formatNote(rec);
         case Amount:
             return formatTxAmount(rec);
         }
