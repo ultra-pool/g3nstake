@@ -138,6 +138,9 @@
      <property name="text">
       <string>&amp;PM Key:</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
      <property name="buddy">
       <cstring>publicKey</cstring>
      </property>
