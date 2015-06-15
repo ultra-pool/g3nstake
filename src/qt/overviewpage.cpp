@@ -11,6 +11,10 @@
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
+#include <QLabel>
+#include <QFrame>
+#include <QStaticText>
+#include <QFontDatabase>
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
@@ -21,9 +25,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 public:
     TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::BTC)
     {
-
     }
-
     inline void paint(QPainter *painter, const QStyleOptionViewItem &option,
                       const QModelIndex &index ) const
     {
@@ -51,6 +53,12 @@ public:
         }
 
         painter->setPen(foreground);
+
+        int fontID = QFontDatabase::addApplicationFont(":/fonts/Ubuntu-Medium");
+        QString fUbuntu = QFontDatabase::applicationFontFamilies(fontID).at(0);
+        QFont* Ubuntu = new QFont(fUbuntu, 8, QFont::Normal, false);
+        painter->setFont(*Ubuntu);
+
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address);
 
         if(amount < 0)
@@ -100,6 +108,28 @@ OverviewPage::OverviewPage(QWidget *parent) :
     filter(0)
 {
     ui->setupUi(this);
+
+    QFont overviewHeaders("Ubuntu", 10, QFont::Normal);
+    QFont overviewSpend("Ubuntu", 20, QFont::Normal);
+    QFont overviewBalances("Ubuntu", 14, QFont::Normal);
+
+    ui->label->setFont(overviewHeaders);
+    ui->label_3->setFont(overviewHeaders);
+    ui->label_4->setFont(overviewHeaders);
+    ui->label_6->setFont(overviewHeaders);
+    ui->labelImmatureText->setFont(overviewHeaders);
+    ui->labelTotalText->setFont(overviewHeaders);
+
+    ui->labelBalance->setFont(overviewSpend);
+    ui->labelBalance->setContentsMargins(0,0,0,5);
+    ui->labelStake->setFont(overviewBalances);
+    ui->labelStake->setContentsMargins(0,0,0,5);
+    ui->labelImmature->setFont(overviewBalances);
+    ui->labelImmature->setContentsMargins(0,0,0,5);
+    ui->labelUnconfirmed->setFont(overviewBalances);
+    ui->labelUnconfirmed->setContentsMargins(0,0,0,5);
+    ui->labelTotal->setFont(overviewBalances);
+    ui->labelTotal->setContentsMargins(0,0,0,5);
 
     // Recent transactions
     ui->listTransactions->setItemDelegate(txdelegate);

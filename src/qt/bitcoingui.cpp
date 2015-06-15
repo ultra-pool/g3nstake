@@ -63,12 +63,15 @@
 #include <QTextStream>
 #include <QTextDocument>
 #include <QSettings>
+#include <QFontDatabase>
+
 #include <iostream>
 
 extern CWallet* pwalletMain;
 extern int64_t nLastCoinStakeSearchInterval;
 double GetPoSKernelPS();
 
+/*
 #define VERTICAL_TOOBAR_STYLESHEET "QToolBar {\
 border:none;\
 height:100%;\
@@ -82,7 +85,7 @@ border: 1px solid #3A3939;\
 border-radius: 3px;\
 margin: 3px;\
 padding-left: 5px;\
-/*padding-right:50px;*/\
+/*padding-right:50px;*\
 padding-top:5px;\
 width:100%;\
 text-align: left;\
@@ -105,6 +108,7 @@ border: 1px solid gray;\
     background: 1px solid #302F2F;\
     font-weight: bold;\
 }"
+*/
 
 ActiveLabel::ActiveLabel(const QString & text, QWidget * parent):
     QLabel(parent){}
@@ -129,8 +133,105 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     rpcConsole(0),
     nWeight(0)
 {
-    resize(950, 550);
+    setFixedSize(1050, 600);
     setWindowTitle(tr("Genstake") + " - " + tr("Wallet"));
+    QFontDatabase fontData;
+    fontData.addApplicationFont(":/fonts/Ubuntu-Bold");
+
+    qApp->setStyleSheet(\
+                      "QMainWindow \
+                      { \
+                           background-image:url(:images/bkg); \
+                           border:none; \
+                           font-family:'Open Sans,sans-serif'; \
+                      } \
+                      \
+                      #frame { } \
+                      QToolBar QLabel { padding-top: 0px;padding-bottom: 0px;spacing: 10px;} \
+                      QToolBar QLabel:item { padding-top: 0px;padding-bottom: 0px;spacing: 10px;} \
+                      \
+                      #spacer2 { background:rgb(65,84,101);border:none; } \
+                      #spacer { background:rgb(0,70,101);border:none; } \
+                      #toolbar2 \
+                      { \
+                           border:none; \
+                           width:0px; \
+                           hight:0px; \
+                           padding-top:0px; \
+                           padding-bottom:0px; \
+                           background-color:rgb(51,69,83); \
+                      } \
+                      \
+                      #toolbar \
+                      { \
+                           border:1px; \
+                           height:100%; \
+                           padding-top:20px; \
+                           background: rgb(0,70,101); \
+                           text-align: left; \
+                           color: white; \
+                           min-width:200px; \
+                           max-width:200px; \
+                      }  \
+                      \
+                      QToolBar QToolButton:hover {background-color: rgb(84,142,168);} \
+                      QToolBar QToolButton:checked {background-color: rgb(26,89,117);}"
+#ifdef Q_OS_MAC
+                     "QToolBar QToolButton \
+                     { \
+                           font-family:Ubuntu; \
+                           font-size:16px; \
+                           padding-left:20px; \
+                           padding-right:55px; \
+                           padding-top:5px; \
+                           padding-bottom:5px; \
+                           width:100%; \
+                           color: rgb(255,255,255); \
+                           text-align: left; \
+                           background-color: rgb(0,70,101); \
+                      }"
+#else
+                     "QToolBar QToolButton \
+                     { \
+                           font-family:Ubuntu; \
+                           font-size:16px; \
+                           padding-left:20px; \
+                           padding-right:200px; \
+                           padding-top:5px; \
+                           padding-bottom:5px; \
+                           width:100%; \
+                           color: rgb(255,255,255); \
+                           text-align: left; \
+                           background-color: rgb(0,70,101); \
+                      }"
+#endif
+                     "#labelMiningIcon \
+                      { \
+                           padding-left:5px; \
+                           font-family:Century Gothic; \
+                           width:100%; \
+                           font-size:10px; \
+                           text-align:center; \
+                           color:white; \
+                      } \
+                      \
+                      QMenu { background: rgb(65,84,101); color:white; padding-bottom:10px; } \
+                      QMenu::item { color:white; background-color: transparent; } \
+                      QMenu::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(156,219,254), stop: 1 rgb(156,219,254)); } \
+                      QMenuBar { background: rgb(65,84,101); color:white; } \
+                      QMenuBar::item \
+                      { \
+                            font-size:12px; \
+                            padding-bottom:8px; \
+                            padding-top:8px; \
+                            padding-left:15px; \
+                            padding-right:15px; \
+                            color:white; \
+                            background-color: transparent; \
+                      } \
+                      \
+                      QMenuBar::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(156,219,254), stop: 1 rgb(156,219,254));} \
+                      ");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -182,29 +283,29 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setCentralWidget(centralWidget);
 
     // Create status bar
-    statusBar();
+    //statusBar();
 
     // Status bar notification icons
-    QFrame *frameBlocks = new QFrame();
-    frameBlocks->setContentsMargins(0,0,0,0);
-    frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-    QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
-    frameBlocksLayout->setContentsMargins(3,0,3,0);
-    frameBlocksLayout->setSpacing(3);
+    //QFrame *frameBlocks = new QFrame();
+    //frameBlocks->setContentsMargins(0,0,0,0);
+    //frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+    //QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
+    //frameBlocksLayout->setContentsMargins(3,0,3,0);
+    //frameBlocksLayout->setSpacing(3);
     labelEncryptionIcon = new ActiveLabel();
 
     labelStakingIcon = new QLabel();
     labelConnectionsIcon = new QLabel();
     labelBlocksIcon = new QLabel();
-    frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelEncryptionIcon);
-    frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelStakingIcon);
-    frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelConnectionsIcon);
-    frameBlocksLayout->addStretch();
-    frameBlocksLayout->addWidget(labelBlocksIcon);
-    frameBlocksLayout->addStretch();
+    //frameBlocksLayout->addStretch();
+    //frameBlocksLayout->addWidget(labelEncryptionIcon);
+    //frameBlocksLayout->addStretch();
+    //frameBlocksLayout->addWidget(labelStakingIcon);
+    //frameBlocksLayout->addStretch();
+    //frameBlocksLayout->addWidget(labelConnectionsIcon);
+    //frameBlocksLayout->addStretch();
+    //frameBlocksLayout->addWidget(labelBlocksIcon);
+    //frameBlocksLayout->addStretch();
 
     if (GetBoolArg("-staking", true))
     {
@@ -223,18 +324,54 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
 
+    progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(156,219,254), stop: 1 rgb(156,219,254)); border-radius: 7px; margin: 0px; }");
+
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
     // See https://qt-project.org/doc/qt-4.8/gallery.html
-    QString curStyle = qApp->style()->metaObject()->className();
-    if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
-    {
-        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
-    }
+    //QString curStyle = qApp->style()->metaObject()->className();
+    //if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
+    //{
+    //    progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 7px; margin: 0px; }");
+    //}
 
-    statusBar()->addWidget(progressBarLabel);
-    statusBar()->addWidget(progressBar);
-    statusBar()->addPermanentWidget(frameBlocks);
+    //statusBar()->addWidget(progressBarLabel);
+    //statusBar()->addWidget(progressBar);
+    //statusBar()->addPermanentWidget(frameBlocks);
+
+    addToolBarBreak(Qt::BottomToolBarArea);
+    QToolBar *toolbar2 = addToolBar(tr("Tabs toolbar"));
+    addToolBar(Qt::BottomToolBarArea,toolbar2);
+    toolbar2->setOrientation(Qt::Horizontal);
+    toolbar2->setMovable( false );
+    toolbar2->setObjectName("toolbar2");
+    toolbar2->setFixedHeight(28);
+    toolbar2->setIconSize(QSize(28,28));
+    QFrame* spacer2 = new QFrame();
+    spacer2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    QHBoxLayout *frameSpacer2 = new QHBoxLayout(spacer2);
+
+    frameSpacer2->setContentsMargins(0,0,0,0);
+    spacer2->setContentsMargins(0,0,0,0);
+
+
+    progressBar->setFixedWidth(700);
+    progressBarLabel->setStyleSheet("QLabel { color: white; } ");
+
+    frameSpacer2->addStretch();
+    frameSpacer2->addWidget(progressBarLabel);
+    frameSpacer2->addWidget(progressBar);
+    frameSpacer2->addStretch();
+
+
+    toolbar2->addWidget(spacer2);
+    spacer2->setObjectName("spacer2");
+
+    toolbar2->addWidget(labelBlocksIcon);
+    toolbar2->addWidget(labelEncryptionIcon);
+    toolbar2->addWidget(labelStakingIcon);
+    toolbar2->addWidget(labelConnectionsIcon);
 
     syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
@@ -255,18 +392,18 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Clicking on "Sign Message" in the receive coins page sends you to the sign message tab
     connect(receiveCoinsPage, SIGNAL(signMessage(QString)), this, SLOT(gotoSignMessageTab(QString)));
 
-    QSettings settings;
-    QByteArray stateArray = settings.value("mainWindowState", "").toByteArray();
-    restoreState(stateArray);
+    //QSettings settings;
+    //QByteArray stateArray = settings.value("mainWindowState", "").toByteArray();
+    //restoreState(stateArray);
 
     gotoOverviewPage();
 }
 
 BitcoinGUI::~BitcoinGUI()
 {
-    QSettings settings;
-    QByteArray stateArray = saveState();
-    settings.setValue("mainWindowState", stateArray);
+//    QSettings settings;
+//    QByteArray stateArray = saveState();
+//    settings.setValue("mainWindowState", stateArray);
 
     if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
         trayIcon->hide();
@@ -409,7 +546,10 @@ void BitcoinGUI::createToolBars()
 {
 
     mainToolbar = addToolBar(tr("Tabs toolbar"));
-    mainToolbar->setObjectName("main");
+    mainToolbar->setObjectName("toolbar");
+    addToolBar(Qt::LeftToolBarArea, mainToolbar);
+    mainToolbar->setOrientation(Qt::Vertical);
+    mainToolbar->setMovable(false);
     mainToolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mainToolbar->addAction(overviewAction);
     mainToolbar->addAction(sendCoinsAction);
@@ -419,8 +559,8 @@ void BitcoinGUI::createToolBars()
     mainToolbar->addAction(messageAction);
     mainToolbar->setContextMenuPolicy(Qt::NoContextMenu);
 
-    connect(mainToolbar,      SIGNAL(orientationChanged(Qt::Orientation)), this, SLOT(mainToolbarOrientation(Qt::Orientation)));
-    mainToolbarOrientation(mainToolbar->orientation());
+    //connect(mainToolbar,      SIGNAL(orientationChanged(Qt::Orientation)), this, SLOT(mainToolbarOrientation(Qt::Orientation)));
+    //mainToolbarOrientation(mainToolbar->orientation());
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -926,10 +1066,10 @@ void BitcoinGUI::mainToolbarOrientation(Qt::Orientation orientation)
     }
 }
 
-void BitcoinGUI::secondaryToolbarOrientation(Qt::Orientation orientation)
-{
-    secondaryToolbar->setStyleSheet(orientation == Qt::Horizontal ? HORIZONTAL_TOOLBAR_STYLESHEET : VERTICAL_TOOBAR_STYLESHEET);
-}
+//void BitcoinGUI::secondaryToolbarOrientation(Qt::Orientation orientation)
+//{
+//    secondaryToolbar->setStyleSheet(orientation == Qt::Horizontal ? HORIZONTAL_TOOLBAR_STYLESHEET : VERTICAL_TOOBAR_STYLESHEET);
+//}
 
 void BitcoinGUI::setEncryptionStatus(int status)
 {
