@@ -141,9 +141,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     qApp->setStyleSheet(\
                       "QMainWindow \
                       { \
-                           background-image:url(:images/bkg); \
-                           border:none; \
-                           font-family:'Open Sans,sans-serif'; \
+                        width:850px;\
+                        \
+                        \
                       } \
                       \
                       #frame { } \
@@ -167,15 +167,14 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                            border:1px; \
                            height:100%; \
                            padding-top:20px; \
+                           padding-left: 20px; \
+                           padding-right: 20px;\
                            background: rgb(0,70,101); \
                            text-align: left; \
                            color: white; \
                            min-width:200px; \
                            max-width:200px; \
-                      }  \
-                      \
-                      QToolBar QToolButton:hover {background-color: rgb(84,142,168);} \
-                      QToolBar QToolButton:checked {background-color: rgb(26,89,117);}"
+                      }"
 #ifdef Q_OS_MAC
                      "QToolBar QToolButton \
                      { \
@@ -193,19 +192,32 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #else
                      "QToolBar QToolButton \
                      { \
+                       \
                            font-family:Ubuntu; \
                            font-size:16px; \
                            padding-left:20px; \
-                           padding-right:200px; \
                            padding-top:5px; \
                            padding-bottom:5px; \
-                           width:100%; \
+                           padding-right:20px;\
+                           width:200px; \
                            color: rgb(255,255,255); \
                            text-align: left; \
                            background-color: rgb(0,70,101); \
                       }"
 #endif
-                     "#labelMiningIcon \
+                     " #OverviewButton:hover {background-color: rgb(84,142,168); border: none;} \
+                       #OverviewButton:checked {background-color: rgb(26,89,117); border: none;} \
+                       #SendButton:hover {background-color: rgb(84,142,168); border: none;} \
+                       #SendButton:checked {background-color: rgb(26,89,117); border: none;} \
+                       #ReceiveButton:hover {background-color: rgb(84,142,168); border: none;} \
+                       #ReceiveButton:checked {background-color: rgb(26,89,117); border: none;} \
+                       #HistoryButton:hover {background-color: rgb(84,142,168); border: none;} \
+                       #HistoryButton:checked {background-color: rgb(26,89,117); border: none;} \
+                       #AddressBookButton:hover {background-color: rgb(84,142,168); border: none;} \
+                       #AddressBookButton:checked {background-color: rgb(26,89,117); border: none;} \
+                       #MessageButton:hover {background-color: rgb(84,142,168); border: none;} \
+                       #MessageButton:checked {background-color: rgb(26,89,117); border: none;} \
+                     #labelMiningIcon \
                       { \
                            padding-left:5px; \
                            font-family:Century Gothic; \
@@ -217,7 +229,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                       \
                       QMenu { background: rgb(65,84,101); color:white; padding-bottom:10px; } \
                       QMenu::item { color:white; background-color: transparent; } \
-                      QMenu::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(156,219,254), stop: 1 rgb(156,219,254)); } \
+                      QMenu::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(84,142,168), stop: 1 rgb(84,142,168));} \
                       QMenuBar { background: rgb(65,84,101); color:white; } \
                       QMenuBar::item \
                       { \
@@ -230,7 +242,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                             background-color: transparent; \
                       } \
                       \
-                      QMenuBar::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(156,219,254), stop: 1 rgb(156,219,254));} \
+                      QMenuBar::item:selected { background-color:qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(84,142,168), stop: 1 rgb(84,142,168));} \
                       ");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
@@ -552,11 +564,17 @@ void BitcoinGUI::createToolBars()
     mainToolbar->setMovable(false);
     mainToolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     mainToolbar->addAction(overviewAction);
+    mainToolbar->widgetForAction(overviewAction)->setObjectName("OverviewButton");
     mainToolbar->addAction(sendCoinsAction);
+    mainToolbar->widgetForAction(sendCoinsAction)->setObjectName("SendButton");
     mainToolbar->addAction(receiveCoinsAction);
+    mainToolbar->widgetForAction(receiveCoinsAction)->setObjectName("ReceiveButton");
     mainToolbar->addAction(historyAction);
+    mainToolbar->widgetForAction(historyAction)->setObjectName("HistoryButton");
     mainToolbar->addAction(addressBookAction);
+    mainToolbar->widgetForAction(addressBookAction)->setObjectName("AddressBookButton");
     mainToolbar->addAction(messageAction);
+    mainToolbar->widgetForAction(messageAction)->setObjectName("MessageButton");
     mainToolbar->setContextMenuPolicy(Qt::NoContextMenu);
 
     //connect(mainToolbar,      SIGNAL(orientationChanged(Qt::Orientation)), this, SLOT(mainToolbarOrientation(Qt::Orientation)));
@@ -1155,6 +1173,8 @@ void BitcoinGUI::unlockWallet()
         dlg.setModel(walletModel);
         dlg.exec();
     }
+    AddressTableModel *UpdateAddresses = walletModel->getAddressTableModel();
+    UpdateAddresses->refreshAddresses();
 }
 
 void BitcoinGUI::lockWallet()
@@ -1163,6 +1183,8 @@ void BitcoinGUI::lockWallet()
         return;
 
     walletModel->setWalletLocked(true);
+    AddressTableModel *UpdateAddresses = walletModel->getAddressTableModel();
+    UpdateAddresses->refreshAddresses();
 }
 
 void BitcoinGUI::showNormalIfMinimized(bool fToggleHidden)
