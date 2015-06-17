@@ -248,14 +248,14 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                     
                     CScript scriptP = CScript() << OP_RETURN << ephem_pubkey;
                     
-                    if (rcp.narration.length() > 0)
+                    if (rcp.note.length() > 0)
                     {
-                        std::string sNarr = rcp.narration.toStdString();
+                        std::string sNarr = rcp.note.toStdString();
                         
                         if (sNarr.length() > 24)
                         {
-                            printf("Narration is too long.\n");
-                            return NarrationTooLong;
+                            printf("Note is too long.\n");
+                            return NoteTooLong;
                         };
                         
                         std::vector<unsigned char> vchNarr;
@@ -265,13 +265,13 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                         
                         if (!crypter.Encrypt((uint8_t*)&sNarr[0], sNarr.length(), vchNarr))
                         {
-                            printf("Narration encryption failed.\n");
+                            printf("Note encryption failed.\n");
                             return Aborted;
                         };
                         
                         if (vchNarr.size() > 48)
                         {
-                            printf("Encrypted narration is too long.\n");
+                            printf("Encrypted note is too long.\n");
                             return Aborted;
                         };
                         
@@ -295,14 +295,14 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             
             
             
-            if (rcp.narration.length() > 0)
+            if (rcp.note.length() > 0)
             {
-                std::string sNarr = rcp.narration.toStdString();
+                std::string sNarr = rcp.note.toStdString();
                 
                 if (sNarr.length() > 24)
                 {
-                    printf("Narration is too long.\n");
-                    return NarrationTooLong;
+                    printf("Note is too long.\n");
+                    return NoteTooLong;
                 };
                 
                 std::vector<uint8_t> vNarr(sNarr.c_str(), sNarr.c_str() + sNarr.length());
@@ -334,7 +334,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             char key[64];
             if (snprintf(key, sizeof(key), "n_%u", pos) < 1)
             {
-                printf("CreateStealthTransaction(): Error creating narration key.");
+                printf("CreateStealthTransaction(): Error creating note key.");
                 continue;
             };
             wtx.mapValue[key] = it->second;

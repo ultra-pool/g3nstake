@@ -214,9 +214,9 @@ void SendCoinsDialog::on_sendButton_clicked()
             tr("Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here."),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
-    case WalletModel::NarrationTooLong:
+    case WalletModel::NoteTooLong:
         QMessageBox::warning(this, tr("Send Coins"),
-            tr("Error: Narration is too long."),
+            tr("Error: Note is too long."),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::Aborted: // User aborted, nothing to do

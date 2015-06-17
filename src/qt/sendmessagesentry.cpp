@@ -25,7 +25,7 @@ SendMessagesEntry::SendMessagesEntry(QWidget *parent) :
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
-    ui->sendTo->setPlaceholderText(tr("Enter a Genstake address (e.g. JXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)"));
+    ui->sendTo->setPlaceholderText(tr("Enter a Genstake Message address (e.g. GXywGBZBowrppUwwNUo1GCRDTibzJi7g2M!fkCGFMd3GuLqESk3fQ37mwB5c78zQT6KEU6QXdRE6QZ1)"));
     ui->publicKey->setPlaceholderText(tr("Enter the public key for the address above, it is not in the blockchain"));
     ui->messageText->setErrorText(tr("You cannot send a blank message!"));
 #endif
@@ -45,7 +45,7 @@ void SendMessagesEntry::on_pasteButton_clicked()
     // Paste text from clipboard into recipient field
     ui->sendTo->setText(QApplication::clipboard()->text());
 }
-
+/*
 void SendMessagesEntry::on_addressBookButton_clicked()
 {
     if(!model)
@@ -66,7 +66,7 @@ void SendMessagesEntry::on_addressBookButton_clicked()
             ui->messageText->setFocus();
     }
 }
-
+*/
 void SendMessagesEntry::on_sendTo_textChanged(const QString &address)
 {
     if(!model)
@@ -174,8 +174,8 @@ SendMessagesRecipient SendMessagesEntry::getValue()
 QWidget *SendMessagesEntry::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, ui->sendTo);
-    QWidget::setTabOrder(ui->sendTo, ui->addressBookButton);
-    QWidget::setTabOrder(ui->addressBookButton, ui->pasteButton);
+//    QWidget::setTabOrder(ui->sendTo, ui->addressBookButton);
+//    QWidget::setTabOrder(ui->addressBookButton, ui->pasteButton);
     QWidget::setTabOrder(ui->pasteButton, ui->deleteButton);
     QWidget::setTabOrder(ui->deleteButton, ui->addAsLabel);
     QWidget::setTabOrder(ui->addAsLabel, ui->publicKey);

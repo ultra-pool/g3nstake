@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="labelExplanation">
      <property name="text">
-      <string>These are your sent and received encrypted messages. Click on an item to read it.</string>
+      <string>These are your sent and received private messages. Click on an item to read it.</string>
      </property>
      <property name="textFormat">
       <enum>Qt::PlainText</enum>
@@ -121,7 +121,13 @@
          </layout>
         </item>
         <item>
-         <widget class="QListView" name="listConversation"/>
+         <widget class="QListView" name="listConversation">
+          <property name="styleSheet">
+           <string notr="true">QListView {
+selection-background-color: rgb(234, 255, 249);
+}</string>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3"/>

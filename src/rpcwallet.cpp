@@ -302,7 +302,7 @@ Value sendtoaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 5)
         throw runtime_error(
-            "sendtoaddress <genstakeaddress> <amount> [comment] [comment-to] [narration]\n"
+            "sendtoaddress <genstakeaddress> <amount> [comment] [comment-to] [note]\n"
             "<amount> is a real and is rounded to the nearest 0.000001"
             + HelpRequiringPassphrase());
 
@@ -331,11 +331,11 @@ Value sendtoaddress(const Array& params, bool fHelp)
         wtx.mapValue["comment"] = params[2].get_str();
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
         wtx.mapValue["to"] = params[3].get_str();
-    // Narration
+    // Note
     if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
         sNarr = params[4].get_str();
     if (sNarr.length() > 24)
-        throw runtime_error("Narration must be 24 characters or less.");
+        throw runtime_error("Note must be 24 characters or less.");
 
     string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, sNarr, wtx);
     if (strError != "")
@@ -679,7 +679,7 @@ Value sendfrom(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 3 || params.size() > 7)
         throw runtime_error(
-            "sendfrom <fromaccount> <togenstakeaddress> <amount> [minconf=1] [narration] [comment] [comment-to]\n"
+            "sendfrom <fromaccount> <togenstakeaddress> <amount> [minconf=1] [note] [comment] [comment-to]\n"
             "<amount> is a real and is rounded to the nearest 0.000001"
             + HelpRequiringPassphrase());
 
@@ -701,7 +701,7 @@ Value sendfrom(const Array& params, bool fHelp)
         sNarr = params[4].get_str();
     
     if (sNarr.length() > 24)
-        throw runtime_error("Narration must be 24 characters or less.");
+        throw runtime_error("Note must be 24 characters or less.");
     
     if (params.size() > 5 && params[5].type() != null_type && !params[5].get_str().empty())
         wtx.mapValue["comment"] = params[5].get_str();
@@ -2006,7 +2006,7 @@ Value sendtostealthaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 5)
         throw runtime_error(
-            "sendtostealthaddress <stealth_address> <amount> [comment] [comment-to] [narration]\n"
+            "sendtostealthaddress <stealth_address> <amount> [comment] [comment-to] [note]\n"
             "<amount> is a real and is rounded to the nearest 0.000001"
             + HelpRequiringPassphrase());
     
@@ -2033,11 +2033,11 @@ Value sendtostealthaddress(const Array& params, bool fHelp)
         wtx.mapValue["comment"] = params[2].get_str();
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
         wtx.mapValue["to"] = params[3].get_str();
-    // Narration
+    // Note
     if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
         sNarr = params[4].get_str();
     if (sNarr.length() > 24)
-        throw runtime_error("Narration must be 24 characters or less.");
+        throw runtime_error("Note must be 24 characters or less.");
     
     std::string sError;
     if (!pwalletMain->SendStealthMoneyToDestination(sxAddr, nAmount, sNarr, wtx, sError))

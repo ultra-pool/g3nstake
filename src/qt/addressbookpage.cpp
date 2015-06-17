@@ -13,6 +13,8 @@
 #include <QMessageBox>
 #include <QMenu>
 
+#include "smessage.h"
+
 #ifdef USE_QRCODE
 #include "qrcodedialog.h"
 #endif
@@ -64,6 +66,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     // Context menu actions
     QAction *copyLabelAction = new QAction(tr("Copy &Label"), this);
     QAction *copyAddressAction = new QAction(ui->copyToClipboard->text(), this);
+    QAction *copyPMKeyAction = new QAction(tr("Copy &PM Key"), this);
     QAction *editAction = new QAction(tr("&Edit"), this);
     QAction *showQRCodeAction = new QAction(ui->showQRCode->text(), this);
     QAction *signMessageAction = new QAction(ui->signMessage->text(), this);
@@ -73,6 +76,8 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     // Build context menu
     contextMenu = new QMenu();
     contextMenu->addAction(copyAddressAction);
+    if (tab == ReceivingTab)
+    contextMenu->addAction(copyPMKeyAction);
     contextMenu->addAction(copyLabelAction);
     contextMenu->addAction(editAction);
     if(tab == SendingTab)
@@ -86,6 +91,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
 
     // Connect signals for context menu actions
     connect(copyAddressAction, SIGNAL(triggered()), this, SLOT(on_copyToClipboard_clicked()));
+    connect(copyPMKeyAction, SIGNAL(triggered()), this, SLOT(onCopyPMKeyAction()));
     connect(copyLabelAction, SIGNAL(triggered()), this, SLOT(onCopyLabelAction()));
     connect(editAction, SIGNAL(triggered()), this, SLOT(onEditAction()));
     connect(deleteAction, SIGNAL(triggered()), this, SLOT(on_deleteButton_clicked()));
@@ -131,11 +137,24 @@ void AddressBookPage::setModel(AddressTableModel *model)
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
 
+    bool sTab = true;
+    if (tab)
+        sTab = false;
+
     // Set column widths
+    ui->tableView->horizontalHeader()->resizeSection(
+            AddressTableModel::PMKey, 320);
+    ui->tableView->horizontalHeader()->setResizeMode(
+            AddressTableModel::PMKey, QHeaderView::Fixed);
+    ui->tableView->setColumnHidden(
+            AddressTableModel::PMKey, sTab);
     ui->tableView->horizontalHeader()->resizeSection(
             AddressTableModel::Address, 320);
     ui->tableView->horizontalHeader()->setResizeMode(
+            AddressTableModel::Address, QHeaderView::Fixed);
+    ui->tableView->horizontalHeader()->setResizeMode(
             AddressTableModel::Label, QHeaderView::Stretch);
+
 
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
@@ -155,6 +174,38 @@ void AddressBookPage::setOptionsModel(OptionsModel *optionsModel)
 void AddressBookPage::on_copyToClipboard_clicked()
 {
     GUIUtil::copyEntryData(ui->tableView, AddressTableModel::Address);
+}
+
+void AddressBookPage::onCopyPMKeyAction()
+{
+    QString Address;
+    QString PMKey;
+    int Result;
+    std::string KeyString;
+    std::string AddressString;
+
+    Address = GUIUtil::getEntryData(ui->tableView, AddressTableModel::Address);
+
+    AddressString = Address.toStdString();
+
+    Result = SecureMsgGetLocalPublicKey(AddressString, KeyString);
+
+    if (Result == 1)
+            printf("Error obtaining Key, returned 1 \n");
+    if (Result == 2)
+            printf("Error: Wallet reports invalid address. Back to the drawing board \n");
+    if (Result == 3)
+            printf("Address does not refer to a key? WTH?\n");
+    if (Result == 4)
+            printf("Address not in wallet. Which is weird, since we just right clicked it from our wallet. \n");
+
+    PMKey = QString::fromStdString(KeyString);
+
+//    QString OutString;
+
+//    OutString = "Address: " + Address + "\nPM Key:  " + PMKey;
+
+    QApplication::clipboard()->setText(PMKey);
 }
 
 void AddressBookPage::onCopyLabelAction()
@@ -325,6 +376,7 @@ void AddressBookPage::exportClicked()
     writer.setModel(proxyModel);
     writer.addColumn("Label", AddressTableModel::Label, Qt::EditRole);
     writer.addColumn("Address", AddressTableModel::Address, Qt::EditRole);
+    writer.addColumn("PM KEY", AddressTableModel::PMKey, Qt::EditRole);
 
     if(!writer.write())
     {

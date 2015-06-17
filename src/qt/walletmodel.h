@@ -27,7 +27,7 @@ class SendCoinsRecipient
 public:
     QString address;
     QString label;
-    QString narration;
+    QString note;
     int typeInd;
     qint64 amount;
 };
@@ -51,7 +51,7 @@ public:
         DuplicateAddress,
         TransactionCreationFailed, // Error returned when wallet is still locked
         TransactionCommitFailed,
-        NarrationTooLong,
+        NoteTooLong,
         Aborted
     };
 

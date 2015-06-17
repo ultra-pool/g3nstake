@@ -27,7 +27,8 @@ public:
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
         Address = 1,  /**< Bitcoin address */
-        Type = 2  /**< Address type  */
+        PMKey = 2,
+        Type = 3  /**< Address type  */
     };
 
     enum RoleIndex {
@@ -92,6 +93,7 @@ public slots:
     /* Update address list from core.
      */
     void updateEntry(const QString &address, const QString &label, bool isMine, int status);
+    void refreshAddresses();
 
     friend class AddressTablePriv;
 };

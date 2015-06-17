@@ -168,7 +168,7 @@ public slots:
     void handleURI(QString strURI);
 
     void mainToolbarOrientation(Qt::Orientation orientation);
-    void secondaryToolbarOrientation(Qt::Orientation orientation);
+    //void secondaryToolbarOrientation(Qt::Orientation orientation);
 
 private slots:
     /** Switch to overview (home) page */
