@@ -368,7 +368,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     spacer2->setContentsMargins(0,0,0,0);
 
 
-    progressBar->setFixedWidth(700);
+    progressBar->setFixedWidth(800);
     progressBarLabel->setStyleSheet("QLabel { color: white; } ");
 
     frameSpacer2->addStretch();
