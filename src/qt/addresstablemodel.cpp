@@ -76,8 +76,10 @@ public:
                 if (fMine)
                 {
                     int i = SecureMsgGetLocalPublicKey(a, PMKey);
-                    if (i)
-                        printf("Error getting PM Key \n");
+                    if (i == 4)
+                        PMKey = "Wallet is Locked.";
+                    else if (i)
+                        printf("Error getting PM Key %i\n", i);
                 }
 
                 cachedAddressTable.append(AddressTableEntry(fMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending,
@@ -185,6 +187,11 @@ AddressTableModel::AddressTableModel(CWallet *wallet, WalletModel *parent) :
 {
     columns << tr("Label") << tr("Address") << tr("PM Key");
     priv = new AddressTablePriv(wallet, this);
+    priv->refreshAddressTable();
+}
+
+void AddressTableModel::refreshAddresses()
+{
     priv->refreshAddressTable();
 }
 
