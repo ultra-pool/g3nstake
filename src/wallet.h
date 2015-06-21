@@ -199,6 +199,7 @@ public:
     void ResendWalletTransactions(bool fForce = false);
     int64_t GetBalance() const;
     int64_t GetUnconfirmedBalance() const;
+    int64_t GetConfirmingBalance() const;
     int64_t GetImmatureBalance() const;
     int64_t GetStake() const;
     int64_t GetNewMint() const;
@@ -672,6 +673,18 @@ public:
     bool IsFromMe() const
     {
         return (GetDebit() > 0);
+    }
+
+    bool IsRecommended() const
+    {
+        // Quick answer in most cases
+        if (!IsFinal())
+            return false;
+        int nDepth = GetDepthInMainChain();
+        if (nDepth < 10)
+            return false;
+
+        return true;
     }
 
     bool IsTrusted() const

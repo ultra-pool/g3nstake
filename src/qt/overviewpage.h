@@ -27,7 +27,7 @@ public:
     void showOutOfSyncWarning(bool fShow);
 
 public slots:
-    void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance);
+    void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 confirmingBalance, qint64 immatureBalance);
 
 signals:
     void transactionClicked(const QModelIndex &index);
@@ -38,6 +38,7 @@ private:
     qint64 currentBalance;
     qint64 currentStake;
     qint64 currentUnconfirmedBalance;
+    qint64 currentConfirmingBalance;
     qint64 currentImmatureBalance;
 
     TxViewDelegate *txdelegate;

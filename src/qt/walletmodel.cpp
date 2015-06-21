@@ -45,6 +45,11 @@ qint64 WalletModel::getUnconfirmedBalance() const
     return wallet->GetUnconfirmedBalance();
 }
 
+qint64 WalletModel::getConfirmingBalance() const
+{
+    return wallet->GetConfirmingBalance();
+}
+
 qint64 WalletModel::getStake() const
 {
     return wallet->GetStake();
@@ -91,15 +96,17 @@ void WalletModel::checkBalanceChanged()
     qint64 newBalance = getBalance();
     qint64 newStake = getStake();
     qint64 newUnconfirmedBalance = getUnconfirmedBalance();
+    qint64 newConfirmingBalance = getConfirmingBalance();
     qint64 newImmatureBalance = getImmatureBalance();
 
-    if(cachedBalance != newBalance || cachedStake != newStake || cachedUnconfirmedBalance != newUnconfirmedBalance || cachedImmatureBalance != newImmatureBalance)
+    if(cachedBalance != newBalance || cachedStake != newStake || cachedUnconfirmedBalance != newUnconfirmedBalance || cachedConfirmingBalance != newConfirmingBalance || cachedImmatureBalance != newImmatureBalance)
     {
         cachedBalance = newBalance;
         cachedStake = newStake;
         cachedUnconfirmedBalance = newUnconfirmedBalance;
+        cachedConfirmingBalance = newConfirmingBalance;
         cachedImmatureBalance = newImmatureBalance;
-        emit balanceChanged(newBalance, newStake, newUnconfirmedBalance, newImmatureBalance);
+        emit balanceChanged(newBalance, newStake, newUnconfirmedBalance, newConfirmingBalance, newImmatureBalance);
     }
 }
 

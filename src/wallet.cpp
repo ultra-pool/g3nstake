@@ -15,7 +15,7 @@
 
 using namespace std;
 
-unsigned int nStakeSplitAge = 1 * 8 * 60 * 60;
+unsigned int nStakeSplitAge = 1 * 24 * 60 * 60;
 int64_t nStakeCombineThreshold = 100 * COIN;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1131,6 +1131,21 @@ int64_t CWallet::GetUnconfirmedBalance() const
         {
             const CWalletTx* pcoin = &(*it).second;
             if (!pcoin->IsFinal() || (!pcoin->IsTrusted() && pcoin->GetDepthInMainChain() == 0))
+                nTotal += pcoin->GetAvailableCredit();
+        }
+    }
+    return nTotal;
+}
+
+int64_t CWallet::GetConfirmingBalance() const
+{
+    int64_t nTotal = 0;
+    {
+        LOCK2(cs_main, cs_wallet);
+        for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
+        {
+            const CWalletTx* pcoin = &(*it).second;
+            if (!pcoin->IsRecommended())
                 nTotal += pcoin->GetAvailableCredit();
         }
     }
