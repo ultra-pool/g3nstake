@@ -54,10 +54,13 @@ public:
 
         painter->setPen(foreground);
 
-        int fontID = QFontDatabase::addApplicationFont(":/fonts/Ubuntu-Medium");
-        QString fUbuntu = QFontDatabase::applicationFontFamilies(fontID).at(0);
-        QFont* Ubuntu = new QFont(fUbuntu, 8, QFont::Normal, false);
-        painter->setFont(*Ubuntu);
+        if (fontID)
+        {
+            QString fUbuntu = QFontDatabase::applicationFontFamilies(fontID).at(0);
+            QFont* Ubuntu = new QFont(fUbuntu, 8, QFont::Normal, false);
+            painter->setFont(*Ubuntu);
+
+        }
 
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address);
 
@@ -93,6 +96,7 @@ public:
     }
 
     int unit;
+    int fontID;
 
 };
 #include "overviewpage.moc"
@@ -103,6 +107,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     currentBalance(-1),
     currentStake(0),
     currentUnconfirmedBalance(-1),
+    currentConfirmingBalance(-1),
     currentImmatureBalance(-1),
     txdelegate(new TxViewDelegate()),
     filter(0)
@@ -158,12 +163,13 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance)
+void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 confirmingBalance, qint64 immatureBalance)
 {
     int unit = model->getOptionsModel()->getDisplayUnit();
     currentBalance = balance;
     currentStake = stake;
     currentUnconfirmedBalance = unconfirmedBalance;
+    currentConfirmingBalance = confirmingBalance;
     currentImmatureBalance = immatureBalance;
     ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
     ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
@@ -171,9 +177,27 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
     ui->labelTotal->setText(BitcoinUnits::formatWithUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
 
+
+    if (confirmingBalance > unconfirmedBalance)
+    {
+            ui->label_3->setText("Confirming");
+            ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, confirmingBalance));
+    } else {
+            if (ui->label_3->text() != "Unconfirmed")
+                ui->label_3->setText("Unconfirmed");
+    }
+
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
+    bool showUnconfirmed = false;
+
+    if(confirmingBalance !=0 || unconfirmedBalance !=0)
+        showUnconfirmed = true;
+
     bool showImmature = immatureBalance != 0;
+
+    ui->label_3->setVisible(showUnconfirmed);
+    ui->labelUnconfirmed->setVisible(showUnconfirmed);
     ui->labelImmature->setVisible(showImmature);
     ui->labelImmatureText->setVisible(showImmature);
 }
@@ -196,8 +220,8 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
         // Keep up to date with wallet
-        setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getImmatureBalance());
-        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64)));
+        setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getConfirmingBalance(), model->getImmatureBalance());
+        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64, qint64)));
 
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
     }
@@ -211,10 +235,12 @@ void OverviewPage::updateDisplayUnit()
     if(model && model->getOptionsModel())
     {
         if(currentBalance != -1)
-            setBalance(currentBalance, model->getStake(), currentUnconfirmedBalance, currentImmatureBalance);
+            setBalance(currentBalance, model->getStake(), currentUnconfirmedBalance, currentConfirmingBalance, currentImmatureBalance);
 
         // Update txdelegate->unit with the current unit
         txdelegate->unit = model->getOptionsModel()->getDisplayUnit();
+        if (!txdelegate->fontID)
+            txdelegate->fontID = QFontDatabase::addApplicationFont(":/fonts/Ubuntu-Medium");
 
         ui->listTransactions->update();
     }
