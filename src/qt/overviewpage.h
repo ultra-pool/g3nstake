@@ -40,6 +40,7 @@ private:
     qint64 currentUnconfirmedBalance;
     qint64 currentConfirmingBalance;
     qint64 currentImmatureBalance;
+    int FontID;
 
     TxViewDelegate *txdelegate;
     TransactionFilterProxy *filter;

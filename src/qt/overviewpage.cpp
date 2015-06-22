@@ -54,7 +54,7 @@ public:
 
         painter->setPen(foreground);
 
-        if (fontID)
+        if (fontID > 0)
         {
             QString fUbuntu = QFontDatabase::applicationFontFamilies(fontID).at(0);
             QFont* Ubuntu = new QFont(fUbuntu, 8, QFont::Normal, false);
@@ -113,6 +113,8 @@ OverviewPage::OverviewPage(QWidget *parent) :
     filter(0)
 {
     ui->setupUi(this);
+
+    txdelegate->fontID = -1;
 
     QFont overviewHeaders("Ubuntu", 10, QFont::Normal);
     QFont overviewSpend("Ubuntu", 20, QFont::Normal);
@@ -239,8 +241,11 @@ void OverviewPage::updateDisplayUnit()
 
         // Update txdelegate->unit with the current unit
         txdelegate->unit = model->getOptionsModel()->getDisplayUnit();
-        if (!txdelegate->fontID)
-            txdelegate->fontID = QFontDatabase::addApplicationFont(":/fonts/Ubuntu-Medium");
+        if (txdelegate->fontID < 0)
+        {
+            FontID = QFontDatabase::addApplicationFont(":/fonts/Ubuntu-Medium");
+            txdelegate->fontID = FontID;
+        }
 
         ui->listTransactions->update();
     }
