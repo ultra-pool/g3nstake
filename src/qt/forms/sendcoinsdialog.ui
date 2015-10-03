@@ -540,7 +540,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayoutCoinControl4" stretch="0,0,0">
+         <layout class="QHBoxLayout" name="horizontalLayoutCoinControl4" stretch="0,0,0,0">
           <property name="spacing">
            <number>12</number>
           </property>
@@ -554,6 +554,13 @@
            <number>5</number>
           </property>
           <item>
+		  <widget class="QCheckBox" name="returnChangeCheckBox">
+		  <property name="text">
+		  <string>Return Change</string>
+		  </property>
+		  </widget>
+		  </item>
+		  <item>
            <widget class="QCheckBox" name="checkBoxCoinControlChange">
             <property name="text">
              <string>custom change address</string>
@@ -626,7 +633,7 @@
         <x>0</x>
         <y>0</y>
         <width>830</width>
-        <height>165</height>
+        <height>172</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
