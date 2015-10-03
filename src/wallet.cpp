@@ -1470,7 +1470,7 @@ bool CWallet::SelectCoinsForStaking(int64_t nTargetValue, unsigned int nSpendTim
 }
 
 
-bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, int32_t& nChangePos, const CCoinControl* coinControl)
+bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, int32_t& nChangePos, int nSplitBlock, const CCoinControl* coinControl)
 {
     int64_t nValue = 0;
     BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
@@ -1490,6 +1490,8 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
         CTxDB txdb("r");
         {
             nFeeRet = nTransactionFee;
+			if(fSplitBlock)
+				nFeeRet = COIN / 100;
             while (true)
             {
                 wtxNew.vin.clear();
@@ -1498,12 +1500,32 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
 
                 int64_t nTotalValue = nValue + nFeeRet;
                 double dPriority = 0;
+				if( nSplitBlock < 1 ) 
+					nSplitBlock = 1;
+				
                 // vouts to the payees
-                BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
-                {
-                    wtxNew.vout.push_back(CTxOut(s.second, s.first));
+                if (!fSplitBlock)
+				{
+					BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
+						wtxNew.vout.push_back(CTxOut(s.second, s.first));
+				}
+				else
+				{
+					BOOST_FOREACH (const PAIRTYPE(CScript, int64_t)& s, vecSend)
+					{
+						for(int nCount = 0; nCount < nSplitBlock; nCount++)
+						{
+							if(nCount == nSplitBlock -1)
+							{
+								uint64_t nRemainder = s.second % nSplitBlock;
+								wtxNew.vout.push_back(CTxOut((s.second / nSplitBlock) + nRemainder, s.first));
+							}
+							else
+								wtxNew.vout.push_back(CTxOut(s.second / nSplitBlock, s.first));
+						}
+					}
                 }
-                
+				
                 // Choose coins to use
                 set<pair<const CWalletTx*,unsigned int> > setCoins;
                 int64_t nValueIn = 0;
@@ -1642,7 +1664,7 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::strin
     //    note output will be for preceding output
     
     int nChangePos;
-    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
+    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, 1, coinControl);
     
     // -- note will be added to mapValue later in FindStealthTransactions From CommitTransaction
     return rv;
@@ -1986,7 +2008,7 @@ bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std
     std::random_shuffle(vecSend.begin(), vecSend.end());
     
     int nChangePos;
-    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
+    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, 1, coinControl);
     
     // -- the change txn is inserted in a random pos, check here to match narr to output
     if (rv && narr.size() > 0)
