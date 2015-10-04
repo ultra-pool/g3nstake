@@ -1264,10 +1264,11 @@ void MapPort()
 // The second name should resolve to a list of seed addresses.
 
 static const char *strDNSSeed[][2] = {
-    {"node1.genstake", "node1.genstake.com"},
-    {"node2.genstake", "node2.genstake.com"},
-    {"node3.genstake", "node3.genstake.com"},
-    {"node4.genstake", "node4.genstake.com"},
+	{"presstab.pw", "genseed.presstab.pw"},
+    //{"node1.genstake", "node1.genstake.com"},
+    //{"node2.genstake", "node2.genstake.com"},
+    //{"node3.genstake", "node3.genstake.com"},
+    //{"node4.genstake", "node4.genstake.com"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1349,7 +1350,7 @@ void ThreadDNSAddressSeed2(void* parg)
 
 unsigned int pnSeed[] =
 {
-    0x42ac0c50,
+    //0x42ac0c50,
 };
 
 
