@@ -348,7 +348,7 @@ public:
     // get the current wallet format (the oldest client version guaranteed to understand this wallet)
     int GetVersion() { LOCK(cs_wallet); return nWalletVersion; }
 
-    void FixSpentCoins(int& nMismatchSpent, int64_t& nBalanceInQuestion, bool fCheckOnly = false);
+    void FixSpentCoins(int& nMismatchFound, int64_t& nBalanceInQuestion, int& nOrphansFound, bool fCheckOnly);
     void DisableTransaction(const CTransaction &tx);
 
     /** Address book entry changed.
@@ -676,6 +676,21 @@ public:
     bool IsFromMe() const
     {
         return (GetDebit() > 0);
+    }
+	
+	    bool IsConfirmedInMainChain() const
+    {
+        //presstab - removed code that checks walletdb for confirmation, we want blockchain info only
+		
+		// Quick answer in most cases
+        if (!IsFinal())
+            return false;
+        if (GetDepthInMainChain() >= 1)
+            return true;
+        if (!IsFromMe()) // using wtx's cached debit
+            return false;
+		
+        return false;
     }
 
     bool IsRecommended() const
