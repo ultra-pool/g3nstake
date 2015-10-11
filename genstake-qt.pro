@@ -44,34 +44,20 @@ UI_DIR = build
 build_macosx64 {
     QMAKE_TARGET_BUNDLE_PREFIX = com.getgenstake
     BOOST_LIB_SUFFIX=-mt
-    BOOST_INCLUDE_PATH=/usr/local/include
-    BOOST_LIB_PATH=/usr/local/lib
 
-    BDB_INCLUDE_PATH=/usr/local/opt/berkeley-db4/include
-    BDB_LIB_PATH=/usr/local/opt/berkeley-db4/lib
-
-    OPENSSL_INCLUDE_PATH=/usr/local/opt/openssl/include
-    OPENSSL_LIB_PATH=/usr/local/opt/openssl/lib
-
-    MINIUPNPC_INCLUDE_PATH=/usr/local/include
-    MINIUPNPC_LIB_PATH=/usr/local/lib
-
-    QRENCODE_INCLUDE_PATH=/usr/local/opt/qrencode/include
-    QRENCODE_LIB_PATH=/usr/local/opt/qrencode/lib
 
     DEFINES += IS_ARCH_64
-    QMAKE_CXXFLAGS += -arch x86_64 -stdlib=libc++
+    QMAKE_CXXFLAGS += -arch x86_64
     QMAKE_CFLAGS += -arch x86_64
-    QMAKE_LFLAGS += -arch x86_64 -stdlib=libc++
+    QMAKE_LFLAGS += -arch x86_64
 }
 
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
-    SDK=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
     # Mac: compile for maximum compatibility (10.7, 32-bit)
-    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7 -isysroot $$SDK
-    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.7 -isysroot $$SDK
-    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7 $$SDK
+    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.7 -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
+    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.7 -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.7 -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 
     !windows:!macx {
         # Linux: static link

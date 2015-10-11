@@ -33,7 +33,7 @@ LIBS += \
  $(DEPSDIR)/lib/libboost_thread-mt.a \
  $(DEPSDIR)/lib/libssl.a \
  $(DEPSDIR)/lib/libcrypto.a \
- -lz
+ $(DEPSDIR)/lib/libz.a
 else
 LIBS += \
  -ldb_cxx-4.8 \
@@ -52,13 +52,13 @@ ifdef RELEASE
 # Compile for maximum compatibility and smallest size.
 # This requires that dependencies are compiled
 # the same way.
-CFLAGS = -mmacosx-version-min=10.5 -arch x86_64 -O3 -msse2
+CFLAGS = -mmacosx-version-min=10.7 -arch x86_64 -O3 -msse2
 else
 CFLAGS = -g -msse2
 endif
 
 # ppc doesn't work because we don't support big-endian
-CFLAGS += -Wall -Wextra -Wformat -Wno-ignored-qualifiers -Wformat-security -Wno-unused-parameter \
+CFLAGS += -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter \
     $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
 
 OBJS= \
@@ -72,8 +72,8 @@ OBJS= \
     obj/db.o \
     obj/init.o \
     obj/keystore.o \
-    obj/main.o \
     obj/miner.o \
+    obj/main.o \
     obj/net.o \
     obj/protocol.o \
     obj/bitcoinrpc.o \
@@ -83,17 +83,20 @@ OBJS= \
     obj/rpcwallet.o \
     obj/rpcblockchain.o \
     obj/rpcrawtransaction.o \
+    obj/rpcsmessage.o \
     obj/script.o \
     obj/sync.o \
     obj/util.o \
     obj/wallet.o \
     obj/walletdb.o \
     obj/noui.o \
-    obj/pbkdf2.o \
     obj/kernel.o \
+    obj/pbkdf2.o \
     obj/scrypt.o \
     obj/scrypt-x86.o \
-    obj/scrypt-x86_64.o
+    obj/scrypt-x86_64.o \
+    obj/smessage.o \
+    obj/stealth.o 
 
 ifndef USE_UPNP
 	override USE_UPNP = -
@@ -114,7 +117,7 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 OBJS += obj/txdb-leveldb.o
 leveldb/libleveldb.a:
-	@echo "Building LevelDB ..."; cd leveldb; make libleveldb.a libmemenv.a; cd ..
+	@echo "Building LevelDB ..." && cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" libleveldb.a libmemenv.a && cd ..
 obj/txdb-leveldb.o: leveldb/libleveldb.a
 
 # auto-generated dependencies:
