@@ -70,6 +70,9 @@ border-top: 3px solid rgb(215,215,215);
              <property name="labelAlignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
              </property>
+             <property name="formAlignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
              <property name="horizontalSpacing">
               <number>0</number>
              </property>
@@ -750,6 +753,12 @@ border-top: 3px solid rgb(215,215,215);
      </item>
      <item>
       <widget class="QLabel" name="label_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>200</width>
@@ -758,7 +767,7 @@ border-top: 3px solid rgb(215,215,215);
        </property>
        <property name="maximumSize">
         <size>
-         <width>256</width>
+         <width>400</width>
          <height>256</height>
         </size>
        </property>
@@ -766,7 +775,7 @@ border-top: 3px solid rgb(215,215,215);
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;img src=&quot;:/images/wallet&quot;/&gt;&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

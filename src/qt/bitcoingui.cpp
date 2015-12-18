@@ -156,7 +156,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                       { \
                            border:none; \
                            width:0px; \
-                           hight:0px; \
+                           height:0px; \
                            padding-top:0px; \
                            padding-bottom:0px; \
                            background-color:rgb(51,69,83); \
@@ -174,23 +174,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                            color: white; \
                            min-width:200px; \
                            max-width:200px; \
-                      }"
-#ifdef Q_OS_MAC
-                     "QToolBar QToolButton \
-                     { \
-                           font-family:Ubuntu; \
-                           font-size:16px; \
-                           padding-left:20px; \
-                           padding-right:55px; \
-                           padding-top:5px; \
-                           padding-bottom:5px; \
-                           width:100%; \
-                           color: rgb(255,255,255); \
-                           text-align: left; \
-                           background-color: rgb(0,70,101); \
-                      }"
-#else
-                     "QToolBar QToolButton \
+                      } \
+                    QToolBar QToolButton \
                      { \
                        \
                            font-family:Ubuntu; \
@@ -203,9 +188,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
                            color: rgb(255,255,255); \
                            text-align: left; \
                            background-color: rgb(0,70,101); \
-                      }"
-#endif
-                     " #OverviewButton:hover {background-color: rgb(84,142,168); border: none;} \
+                      } \
+                     #OverviewButton:hover {background-color: rgb(84,142,168); border: none;} \
                        #OverviewButton:checked {background-color: rgb(26,89,117); border: none;} \
                        #SendButton:hover {background-color: rgb(84,142,168); border: none;} \
                        #SendButton:checked {background-color: rgb(26,89,117); border: none;} \
@@ -333,7 +317,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(false);
     progressBar = new QProgressBar();
-    progressBar->setAlignment(Qt::AlignCenter);
+    progressBar->setAlignment(Qt::AlignLeft);
     progressBar->setVisible(false);
 
     progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,stop: 0 rgb(156,219,254), stop: 1 rgb(156,219,254)); border-radius: 7px; margin: 0px; }");
@@ -368,10 +352,10 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     spacer2->setContentsMargins(0,0,0,0);
 
 
-    progressBar->setFixedWidth(800);
+    progressBar->setFixedWidth(600);
     progressBarLabel->setStyleSheet("QLabel { color: white; } ");
 
-    frameSpacer2->addStretch();
+    //frameSpacer2->addStretch();
     frameSpacer2->addWidget(progressBarLabel);
     frameSpacer2->addWidget(progressBar);
     frameSpacer2->addStretch();
