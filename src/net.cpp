@@ -1270,10 +1270,7 @@ void MapPort()
 static const char *strDNSSeed[][2] = {
 	{"presstab.pw", "genseed.presstab.pw"},
 	{"fuzzbawls.pw", "gen.seed.fuzzbawls.pw"},
-	//{"node1.genstake", "node1.genstake.com"},
-    //{"node2.genstake", "node2.genstake.com"},
-    //{"node3.genstake", "node3.genstake.com"},
-    //{"node4.genstake", "node4.genstake.com"},
+	{"netcraft.ch", "gen.netcraft.ch"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
