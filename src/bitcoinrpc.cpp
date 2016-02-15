@@ -307,6 +307,8 @@ static const CRPCCommand vRPCCommands[] =
     { "resendtx",               &resendtx,               false,  true},
     { "makekeypair",            &makekeypair,            false,  true},
     { "sendalert",              &sendalert,              false,  false},
+	{ "setstakesplitthreshold",  &setstakesplitthreshold,  false,  false},
+	{ "getstakesplitthreshold",  &getstakesplitthreshold,  false,  false},
     
     { "getnewstealthaddress",   &getnewstealthaddress,   false,  false},
     { "liststealthaddresses",   &liststealthaddresses,   false,  false},
