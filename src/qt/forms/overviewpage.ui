@@ -19,17 +19,7 @@
      <item>
       <widget class="QFrame" name="frame">
        <property name="styleSheet">
-        <string notr="true">#frame
-{
-background-color: rgb(227, 227, 227);
-border: 1px solid rgb(185,185,185);
-}
-
-#frame_4
-{
-border:1px solid rgb(215,215,215);
-border-top: 3px solid rgb(215,215,215);
-}</string>
+        <string notr="true"/>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -619,17 +609,7 @@ border-top: 3px solid rgb(215,215,215);
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">#frame_2
-{
-background-color: rgb(227, 227, 227);
-border: 1px solid rgb(185,185,185);
-}
-
-#frame_3
-{
-border:1px solid rgb(215,215,215);
-border-top: 3px solid rgb(215,215,215);
-}</string>
+        <string notr="true"/>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
