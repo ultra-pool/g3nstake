@@ -204,6 +204,7 @@ public:
     void ReacceptWalletTransactions();
     void ResendWalletTransactions(bool fForce = false);
     int64_t GetBalance() const;
+    int64_t GetTotalMinted() const;
     int64_t GetUnconfirmedBalance() const;
     int64_t GetConfirmingBalance() const;
     int64_t GetImmatureBalance() const;

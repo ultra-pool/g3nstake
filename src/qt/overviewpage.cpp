@@ -1,6 +1,7 @@
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
+#include "../main.h"
 #include "walletmodel.h"
 #include "bitcoinunits.h"
 #include "optionsmodel.h"
@@ -15,6 +16,15 @@
 #include <QFrame>
 #include <QStaticText>
 #include <QFontDatabase>
+#include <QTimer>
+
+#if QT_VERSION >= 0x050000
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QVariantMap>
+#endif
+
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
@@ -152,6 +162,13 @@ OverviewPage::OverviewPage(QWidget *parent) :
 
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);
+
+#if QT_VERSION >= 0x050000
+    // set a timer for price API
+    QTimer *timerPriceAPI = new QTimer();
+    connect(timerPriceAPI, SIGNAL(timeout()), this, SLOT(sendRequest()));
+    timerPriceAPI->start(90 * 1000);
+#endif
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex &index)
@@ -165,15 +182,17 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 confirmingBalance, qint64 immatureBalance)
+void OverviewPage::setBalance(qint64 balance, qint64 minted, qint64 stake, qint64 unconfirmedBalance, qint64 confirmingBalance, qint64 immatureBalance)
 {
     int unit = model->getOptionsModel()->getDisplayUnit();
     currentBalance = balance;
+    nTotalMinted = minted;
     currentStake = stake;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentConfirmingBalance = confirmingBalance;
     currentImmatureBalance = immatureBalance;
     ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
+    ui->labelTotalMinted->setText(BitcoinUnits::formatWithUnit(unit, minted));
     ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
     ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
     ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
@@ -202,6 +221,10 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     ui->labelUnconfirmed->setVisible(showUnconfirmed);
     ui->labelImmature->setVisible(showImmature);
     ui->labelImmatureText->setVisible(showImmature);
+
+#if QT_VERSION >= 0x050000
+    sendRequest();
+#endif
 }
 
 void OverviewPage::setModel(WalletModel *model)
@@ -222,8 +245,8 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
         // Keep up to date with wallet
-        setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getConfirmingBalance(), model->getImmatureBalance());
-        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64, qint64)));
+        setBalance(model->getBalance(), model->getTotalMinted(), model->getStake(), model->getUnconfirmedBalance(), model->getConfirmingBalance(), model->getImmatureBalance());
+        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64, qint64, qint64)));
 
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
     }
@@ -237,7 +260,7 @@ void OverviewPage::updateDisplayUnit()
     if(model && model->getOptionsModel())
     {
         if(currentBalance != -1)
-            setBalance(currentBalance, model->getStake(), currentUnconfirmedBalance, currentConfirmingBalance, currentImmatureBalance);
+            setBalance(currentBalance, nTotalMinted, model->getStake(), currentUnconfirmedBalance, currentConfirmingBalance, currentImmatureBalance);
 
         // Update txdelegate->unit with the current unit
         txdelegate->unit = model->getOptionsModel()->getDisplayUnit();
@@ -256,3 +279,72 @@ void OverviewPage::showOutOfSyncWarning(bool fShow)
     ui->labelWalletStatus->setVisible(fShow);
     ui->labelTransactionsStatus->setVisible(fShow);
 }
+
+uint nLastPriceCheck = 0;
+#if QT_VERSION >= 0x050000
+void OverviewPage::updateBtcValueLabel(double nPrice)
+{
+    ui->labelBtcValue->setText(QString::number(nPrice * currentBalance / COIN, 'f', 6));
+}
+
+void OverviewPage::sendRequest()
+{
+    //only update the price once every 60 seconds, don't want to call the API too many times
+    uint nTimeNow = QDateTime::currentDateTime().toUTC().toTime_t();
+    if(nTimeNow - nLastPriceCheck < 60)
+        updateBtcValueLabel(nLastPrice);
+    nLastPriceCheck = nTimeNow;
+
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+    // decide how to process finished() signal
+    connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(handlePriceReply(QNetworkReply*)));
+
+    //build our URL to send GET request to
+    QString strURL = "https://www.cryptopia.co.nz/api/GetMarket/2767";
+
+    manager->get(QNetworkRequest(QUrl(strURL)));
+}
+
+void OverviewPage::handlePriceReply(QNetworkReply *reply)
+{
+    reply->deleteLater();
+
+    if(reply->error() == QNetworkReply::NoError)
+    {
+        // Get the http status code
+        int v = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+        if (v >= 200 && v < 300) // Success
+        {
+            // Here we got the final reply
+            QString replyText = reply->readAll();
+
+            //Parse the json
+            QJsonDocument jsonResponse = QJsonDocument::fromJson(replyText.toUtf8());
+            QJsonObject  ResponseObject = jsonResponse.object();
+            QJsonObject  ResultObject   = ResponseObject.value("Data").toObject();
+
+            if(ResultObject.contains("LastPrice"))
+                nLastPrice = ResultObject["LastPrice"].toDouble();
+
+            updateBtcValueLabel(nLastPrice);
+
+            return;
+        }
+        else if (v >= 300 && v < 400) // Redirection
+        {
+            // Get the redirection url
+            QUrl newUrl = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+            newUrl = reply->url().resolved(newUrl);
+
+            QNetworkAccessManager *manager = reply->manager();
+            QNetworkRequest redirection(newUrl);
+            manager->get(redirection);
+
+            return;
+        }
+    }
+    else
+        return;
+}
+#endif

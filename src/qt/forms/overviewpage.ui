@@ -562,7 +562,7 @@
                </property>
               </widget>
              </item>
-             <item row="20" column="0">
+             <item row="22" column="0">
               <spacer name="verticalSpacer_4">
                <property name="orientation">
                 <enum>Qt::Vertical</enum>
@@ -574,6 +574,46 @@
                 </size>
                </property>
               </spacer>
+             </item>
+             <item row="21" column="0">
+              <widget class="QLabel" name="labelBtcValueText">
+               <property name="text">
+                <string>Current BTC Value</string>
+               </property>
+              </widget>
+             </item>
+             <item row="21" column="1">
+              <widget class="QLabel" name="labelBtcValue">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
+             </item>
+             <item row="20" column="0">
+              <widget class="QLabel" name="labelTotalMintedText">
+               <property name="text">
+                <string>Total Minted</string>
+               </property>
+              </widget>
+             </item>
+             <item row="20" column="1">
+              <widget class="QLabel" name="labelTotalMinted">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
