@@ -40,6 +40,11 @@ qint64 WalletModel::getBalance() const
     return wallet->GetBalance();
 }
 
+qint64 WalletModel::getTotalMinted() const
+{
+    return wallet->GetTotalMinted();
+}
+
 qint64 WalletModel::getUnconfirmedBalance() const
 {
     return wallet->GetUnconfirmedBalance();
