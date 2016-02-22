@@ -814,7 +814,6 @@ void CoinControlDialog::updateView()
             itemOutput->setText(COLUMN_AMOUNT_int64_t, strPad(QString::number(out.tx->vout[out.i].nValue), 15, " ")); // padding so that sorting works correctly
 
             // date
-			int64_t nTime = pindex->nTime;
             itemOutput->setText(COLUMN_DATE, QDateTime::fromTime_t(out.tx->GetTxTime()).toUTC().toString("yy-MM-dd hh:mm"));
             
             // immature PoS reward
@@ -837,13 +836,13 @@ void CoinControlDialog::updateView()
 			itemOutput->setText(COLUMN_WEIGHT, strPad(QString::number(nTxWeight), 8, " "));
 			
 			// Age
-			uint64_t nAge = (GetTime() - nTime);
-			int64_t age = COIN * nAge / (1440 * 60);
-			itemOutput->setText(COLUMN_AGE, strPad(QString::number(age), 15, " "));
+			uint64_t nAge = GetTime() - out.tx->GetTxTime();
+			double age  = (double)nAge/60/60/24;
+			itemOutput->setText(COLUMN_AGE, QString::number(age, 'f', 2));
 			itemOutput->setText(COLUMN_AGE_int64_t, strPad(QString::number(age), 15, " "));
 			
 			// Potential Stake
-			double nPotentialStake = 20 * COIN / (1 + (nBestHeight / YEARLY_BLOCKCOUNT));
+			double nPotentialStake = 20 / (1 + (nBestHeight / YEARLY_BLOCKCOUNT));
 			itemOutput->setText(COLUMN_POTENTIALSTAKE, strPad(QString::number((int64_t)nPotentialStake), 15, " ")); 
 			itemOutput->setText(COLUMN_POTENTIALSTAKE_int64_t, strPad(QString::number((int64_t)nPotentialStake), 16, " "));
 			
@@ -854,7 +853,7 @@ void CoinControlDialog::updateView()
 			uint64_t nMin = 1;
 			nBlockSize = qMax(nBlockSize, nMin);
 			uint64_t nTimeToMaturity = 0;
-			uint64_t nBlockWeight = qMax(nTxWeight, uint64_t(nBlockSize * (nStakeMinAge/(60*60*24))));
+			uint64_t nBlockWeight = nTxWeight;
             nBlockWeight = qMax(nBlockWeight, (uint64_t)1);
 			double dAge = nAge;
 			if (nStakeMinAge - dAge >= 0 )
@@ -863,8 +862,8 @@ void CoinControlDialog::updateView()
 				nTimeToMaturity = 0;
 			uint64_t nAccuracyAdjustment = 1; // this is a manual adjustment in an attempt to make staking estimate more accurate
 			uint64_t nEstimateTime = 60 * nNetworkWeight / nBlockWeight / nAccuracyAdjustment; // 60 seconds is block target
-			uint64_t nMax = 999 * COIN; // qmin cannot compar int64_t, so convert to uint64_t prior
-			nEstimateTime = qMin((nEstimateTime + nTimeToMaturity) * COIN / (60*60*24), nMax); // multiply by coin to use built in formatting
+			uint64_t nMax = 999; // qmin cannot compar int64_t, so convert to uint64_t prior
+			nEstimateTime = qMin((nEstimateTime + nTimeToMaturity) / (60*60*24), nMax); // multiply by coin to use built in formatting
 			itemOutput->setText(COLUMN_TIMEESTIMATE, strPad(QString::number(nEstimateTime), 15, " "));
             
             // transaction hash
