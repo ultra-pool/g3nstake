@@ -42,6 +42,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 	ui->splitBlockCheckBox->setToolTip(tr("Enable/Disable Block Splitting"));
 	ui->returnChangeCheckBox->setToolTip(tr("Use your sending address as the change address"));
 	ui->checkBoxCoinControlChange->setToolTip(tr("Send change to a custom address"));
+    ui->labelBlockSize->setText(QString("0 G3N"));
 #endif
 
     addEntry();
@@ -101,8 +102,8 @@ void SendCoinsDialog::setModel(WalletModel *model)
     }
     if(model && model->getOptionsModel())
     {
-        setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getConfirmingBalance(), model->getImmatureBalance());
-        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64, qint64)));
+        setBalance(model->getBalance(), model->getTotalMinted(), model->getStake(), model->getUnconfirmedBalance(), model->getConfirmingBalance(), model->getImmatureBalance());
+        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64, qint64, qint64)));
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
 
         // Coin Control
@@ -409,8 +410,9 @@ bool SendCoinsDialog::handleURI(const QString &uri)
     return false;
 }
 
-void SendCoinsDialog::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 confirmingBalance, qint64 immatureBalance)
+void SendCoinsDialog::setBalance(qint64 balance, qint64 totalMinted, qint64 stake, qint64 unconfirmedBalance, qint64 confirmingBalance, qint64 immatureBalance)
 {
+    Q_UNUSED(totalMinted);
     Q_UNUSED(stake);
     Q_UNUSED(unconfirmedBalance);
     Q_UNUSED(immatureBalance);
@@ -538,7 +540,7 @@ void SendCoinsDialog::coinControlSplitBlockChecked(int state)
 void SendCoinsDialog::splitBlockLineEditChanged(const QString & text)
 {
 	double nAfterFee =  ui->labelCoinControlAfterFee->text().left(ui->labelCoinControlAfterFee->text().indexOf(" ")).toDouble();
-	double nSize = 0;
+    double nSize = 0;
 	if (nAfterFee > 0 && text.toDouble() > 0)
 		nSize = nAfterFee / text.toDouble();
 	ui->labelBlockSize->setText(QString::number(nSize));

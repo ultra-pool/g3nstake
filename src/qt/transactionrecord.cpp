@@ -141,8 +141,11 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 break;
             };
             
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "", note,
-                            -(nDebit - nChange), nCredit - nChange));
+            TransactionRecord sub = TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "", note,-(nDebit - nChange), nCredit - nChange);
+            CTxDestination address;
+            if (ExtractDestination(wtx.vout[0].scriptPubKey, address))
+                sub.address = CBitcoinAddress(address).ToString();
+            parts.append(sub);
         }
         else if (fAllFromMe)
         {

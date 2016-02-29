@@ -96,7 +96,11 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
     connect(ui->treeWidget, SIGNAL(itemChanged( QTreeWidgetItem*, int)), this, SLOT(viewItemChanged( QTreeWidgetItem*, int)));
 
     // click on header
-    ui->treeWidget->header()->setClickable(true);
+    #if QT_VERSION < 0x050000
+        ui->treeWidget->header()->setClickable(true);
+    #else
+        ui->treeWidget->header()->setSectionsClickable(true);
+    #endif
     connect(ui->treeWidget->header(), SIGNAL(sectionClicked(int)), this, SLOT(headerSectionClicked(int)));
 
     // ok button
@@ -222,13 +226,12 @@ void CoinControlDialog::customSelectCoins()
 				uint256 txhash = out.tx->GetHash();
 			
 				//Getting the coin amount
-				double dCoinAmount = out.tx->vout[out.i].nValue;
+                double dCoinAmount = out.tx->vout[out.i].nValue;
 					
 				//Coin Weight
 				uint64_t nTxWeight = 0;
-				double nTimeWeight = min(GetTime() - out.tx->GetTxTime() - nStakeMinAgeAdjusted, (int64_t)nStakeMaxAge);
-				int64_t nDivideBase = (60*60*24) * COIN; 
-				nTxWeight = (9 + (10 * dCoinAmount * nTimeWeight / nDivideBase)) / 10;
+                double nTimeWeight = min(GetTime() - out.tx->GetTxTime() - nStakeMinAgeAdjusted, (int64_t)nStakeMaxAge) / 86400;
+                nTxWeight = dCoinAmount / COIN * nTimeWeight;
 					
 				//Age
 				double dAge = (GetTime() - out.tx->GetTxTime()) / (double)(1440 * 60);
@@ -443,19 +446,22 @@ void CoinControlDialog::sortView(int column, Qt::SortOrder order)
 // treeview: clicked on header
 void CoinControlDialog::headerSectionClicked(int logicalIndex)
 {
-    if (logicalIndex == COLUMN_AMOUNT) // sort by amount
+    if (logicalIndex == COLUMN_CHECKBOX) // click on most left column -> do nothing
+    {
+        ui->treeWidget->header()->setSortIndicator((sortColumn == COLUMN_AMOUNT_int64_t ? COLUMN_AMOUNT : (sortColumn == COLUMN_PRIORITY_int64_t ? COLUMN_PRIORITY : sortColumn)), sortOrder);
+    }
+    else
+    {
+        if (logicalIndex == COLUMN_AMOUNT) // sort by amount
             logicalIndex = COLUMN_AMOUNT_int64_t;
 
-            logicalIndex = COLUMN_AMOUNT_int64_t;
-			
-		if (logicalIndex == COLUMN_AGE) // sort by age
-            logicalIndex = COLUMN_AGE_int64_t;	
+        if (logicalIndex == COLUMN_AGE) // sort by age
+            logicalIndex = COLUMN_AGE_int64_t;
 
-		if (logicalIndex == COLUMN_POTENTIALSTAKE) // sort by potential stake
+        if (logicalIndex == COLUMN_POTENTIALSTAKE) // sort by potential stake
             logicalIndex = COLUMN_POTENTIALSTAKE_int64_t;
-			
+
         if (logicalIndex == COLUMN_PRIORITY) // sort by priority
-            logicalIndex = COLUMN_PRIORITY_int64_t;
             logicalIndex = COLUMN_PRIORITY_int64_t;
 
         if (sortColumn == logicalIndex)
@@ -463,8 +469,10 @@ void CoinControlDialog::headerSectionClicked(int logicalIndex)
         else
         {
             sortColumn = logicalIndex;
-            sortOrder = ((sortColumn == COLUMN_AMOUNT_int64_t || sortColumn == COLUMN_PRIORITY_int64_t || sortColumn == COLUMN_DATE || sortColumn == COLUMN_CONFIRMATIONS) ? Qt::DescendingOrder : Qt::AscendingOrder); // if amount,date,conf,priority then default => desc, else default => asc
             sortOrder = ((sortColumn == COLUMN_AMOUNT_int64_t || sortColumn == COLUMN_PRIORITY_int64_t || sortColumn == COLUMN_DATE || sortColumn == COLUMN_CONFIRMATIONS || sortColumn == COLUMN_AGE_int64_t || sortColumn == COLUMN_POTENTIALSTAKE_int64_t) ? Qt::DescendingOrder : Qt::AscendingOrder); // if amount,date,conf,priority then default => desc, else default => asc
+        }
+
+        sortView(sortColumn, sortOrder);
     }
 }
 
@@ -750,22 +758,18 @@ void CoinControlDialog::updateView()
 		uint64_t nTxWeight = 0;
 		uint64_t nTxWeightSum = 0;
 		uint64_t nPotentialStakeSum = 0;
-		GetLastBlockIndex(pindexBest, false);
-		int64_t nBestHeight = pindexBest->nHeight;
 		uint64_t nNetworkWeight = GetPoSKernelPS();
 		
         BOOST_FOREACH(const COutput& out, coins.second)
         {
-			int64_t nHeight = nBestHeight - out.nDepth;
-			CBlockIndex* pindex = FindBlockByHeight(nHeight);
 			int nInputSize = 148; // 180 if uncompressed public key
             nSum += out.tx->vout[out.i].nValue;
             nChildren++;
 			
 			//Coin Weight
-			double nTimeWeight = min(GetTime() - out.tx->GetTxTime() - nStakeMinAgeAdjusted, (int64_t)nStakeMaxAge);
-			int64_t nDivideBase = (60*60*24) * COIN; 
-			nTxWeight = (9 + (10 * out.tx->vout[out.i].nValue * nTimeWeight / nDivideBase)) / 10;
+            int64_t nAmount = out.tx->vout[out.i].nValue;
+            double nTimeWeight = min(GetTime() - out.tx->GetTxTime() - nStakeMinAgeAdjusted, (int64_t)nStakeMaxAge) / 86400;
+            nTxWeight = nAmount / COIN * nTimeWeight;
 			nTxWeightSum += nTxWeight;
             
             QTreeWidgetItem *itemOutput;
@@ -833,7 +837,7 @@ void CoinControlDialog::updateView()
             nInputSum    += nInputSize;
 			
 			// List Mode Weight
-			itemOutput->setText(COLUMN_WEIGHT, strPad(QString::number(nTxWeight), 8, " "));
+            itemOutput->setText(COLUMN_WEIGHT, QString::number(nTxWeight, 'f',0));
 			
 			// Age
 			uint64_t nAge = GetTime() - out.tx->GetTxTime();

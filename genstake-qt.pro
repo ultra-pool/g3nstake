@@ -333,8 +333,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/stealth.cpp
 
 RESOURCES += \
-    src/qt/bitcoin.qrc \
-    src/qt/res/themes/qdarkstyle/style.qrc
+    src/qt/bitcoin.qrc 
 
 FORMS += \
     src/qt/forms/coincontroldialog.ui \
