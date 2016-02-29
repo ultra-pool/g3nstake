@@ -27,7 +27,7 @@
 
 
 #define DECORATION_SIZE 64
-#define NUM_ITEMS 3
+#define NUM_ITEMS 5
 
 class TxViewDelegate : public QAbstractItemDelegate
 {
@@ -137,7 +137,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->labelImmatureText->setFont(overviewHeaders);
     ui->labelTotalText->setFont(overviewHeaders);
 
-    ui->labelBalance->setFont(overviewSpend);
+    ui->labelBalance->setFont(overviewBalances);
     ui->labelBalance->setContentsMargins(0,0,0,5);
     ui->labelStake->setFont(overviewBalances);
     ui->labelStake->setContentsMargins(0,0,0,5);
@@ -147,6 +147,12 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->labelUnconfirmed->setContentsMargins(0,0,0,5);
     ui->labelTotal->setFont(overviewBalances);
     ui->labelTotal->setContentsMargins(0,0,0,5);
+    ui->labelBtcValue->setFont(overviewBalances);
+    ui->labelBtcValue->setContentsMargins(0,0,0,5);
+    ui->labelTotalMinted->setFont(overviewBalances);
+    ui->labelTotalMinted->setContentsMargins(0,0,0,5);
+
+    ui->labelInfoPlatform->setFont(overviewBalances);
 
     // Recent transactions
     ui->listTransactions->setItemDelegate(txdelegate);
@@ -246,7 +252,7 @@ void OverviewPage::setModel(WalletModel *model)
 
         // Keep up to date with wallet
         setBalance(model->getBalance(), model->getTotalMinted(), model->getStake(), model->getUnconfirmedBalance(), model->getConfirmingBalance(), model->getImmatureBalance());
-        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64, qint64, qint64)));
+        connect(model, SIGNAL(balanceChanged(qint64, qint64, qint64, qint64, qint64, qint64)), this, SLOT(setBalance(qint64, qint64, qint64, qint64, qint64, qint64)));
 
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
     }
