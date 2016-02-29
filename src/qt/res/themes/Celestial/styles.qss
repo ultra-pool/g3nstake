@@ -125,7 +125,6 @@ QFrame#frameCoinControl {
 /* Balance value */
 #frame #labelBalance {
 	color: $brightest-color;
-	font-size: 14px;
 }
 
 /* Wallet label */

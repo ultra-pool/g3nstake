@@ -15,7 +15,7 @@
 WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), wallet(wallet), optionsModel(optionsModel), addressTableModel(0),
     transactionTableModel(0),
-    cachedBalance(0), cachedStake(0), cachedUnconfirmedBalance(0), cachedImmatureBalance(0),
+    cachedBalance(0), cachedTotalMinted(0), cachedStake(0), cachedUnconfirmedBalance(0), cachedImmatureBalance(0),
     cachedEncryptionStatus(Unencrypted),
     cachedNumBlocks(0)
 {
@@ -99,19 +99,20 @@ void WalletModel::pollBalanceChanged()
 void WalletModel::checkBalanceChanged()
 {
     qint64 newBalance = getBalance();
+    qint64 newTotalMinted = getTotalMinted();
     qint64 newStake = getStake();
     qint64 newUnconfirmedBalance = getUnconfirmedBalance();
     qint64 newConfirmingBalance = getConfirmingBalance();
     qint64 newImmatureBalance = getImmatureBalance();
 
-    if(cachedBalance != newBalance || cachedStake != newStake || cachedUnconfirmedBalance != newUnconfirmedBalance || cachedConfirmingBalance != newConfirmingBalance || cachedImmatureBalance != newImmatureBalance)
+    if(cachedBalance != newBalance || cachedTotalMinted != newTotalMinted || cachedStake != newStake || cachedUnconfirmedBalance != newUnconfirmedBalance || cachedConfirmingBalance != newConfirmingBalance || cachedImmatureBalance != newImmatureBalance)
     {
         cachedBalance = newBalance;
         cachedStake = newStake;
         cachedUnconfirmedBalance = newUnconfirmedBalance;
         cachedConfirmingBalance = newConfirmingBalance;
         cachedImmatureBalance = newImmatureBalance;
-        emit balanceChanged(newBalance, newStake, newUnconfirmedBalance, newConfirmingBalance, newImmatureBalance);
+        emit balanceChanged(newBalance, newTotalMinted, newStake, newUnconfirmedBalance, newConfirmingBalance, newImmatureBalance);
     }
 }
 
