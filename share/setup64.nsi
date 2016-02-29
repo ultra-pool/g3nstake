@@ -1,11 +1,11 @@
-Name "GenStake (32-bit)"
+Name "GenStake (64-bit)"
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.0.4.0
+!define VERSION 1.0.4.99
 !define COMPANY "GenStake project"
 !define URL http://www.g3n.info/
 
@@ -28,6 +28,7 @@ SetCompressor /SOLID lzma
 # Included files
 !include Sections.nsh
 !include MUI2.nsh
+!include x64.nsh
 
 # Variables
 Var StartMenuGroup
@@ -45,8 +46,8 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile genstake-${VERSION}-win32-setup.exe
-InstallDir $PROGRAMFILES\GenStake
+OutFile genstake-${VERSION}-win64-setup.exe
+InstallDir $PROGRAMFILES64\GenStake
 CRCCheck on
 XPStyle on
 BrandingText " "
@@ -71,8 +72,10 @@ Section -Main SEC0000
     File /oname=readme.txt ../doc/README_windows.txt
     SetOutPath $INSTDIR\themes
     File /r ../src/qt/res/themes/*.*
-    SetOutPath $INSTDIR\daemon
-    File ../src/genstaked.exe
+    #SetOutPath $INSTDIR\daemon
+    #File ../src/genstaked.exe
+    #SetOutPath $INSTDIR\src
+    #File /r /x *.exe /x *.o ../src\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 SectionEnd
@@ -118,7 +121,7 @@ Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\GenStake-qt.exe
     Delete /REBOOTOK $INSTDIR\license.txt
     Delete /REBOOTOK $INSTDIR\readme.txt
-    RMDir /r /REBOOTOK $INSTDIR\daemon
+    #RMDir /r /REBOOTOK $INSTDIR\daemon
     RMDir /r /REBOOTOK $INSTDIR\themes
     DeleteRegValue HKCU "${REGKEY}\Components" Main
 SectionEnd
@@ -148,6 +151,13 @@ SectionEnd
 # Installer functions
 Function .onInit
     InitPluginsDir
+    ${If} ${RunningX64}
+      ; disable registry redirection (enable access to 64-bit portion of registry)
+      SetRegView 64
+    ${Else}
+      MessageBox MB_OK|MB_ICONSTOP "Cannot install 64-bit version on a 32-bit system."
+      Abort
+    ${EndIf}
 FunctionEnd
 
 # Uninstaller functions
