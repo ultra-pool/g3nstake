@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 1.0.4.99
+!define VERSION 1.0.4.0
 !define COMPANY "GenStake project"
 !define URL http://www.g3n.info/
 
