@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = GenStake-qt
-VERSION = 1.0.3.0
+VERSION = 1.0.4.0
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
@@ -459,5 +459,10 @@ contains(RELEASE, 1) {
     DEFINES += LINUX
     LIBS += -lrt -ldl
 }
+
+themes.path = $$OUT_PWD/$$DESTDIR/themes
+macx:themes.path = $$OUT_PWD/$$DESTDIR/Genstake-Qt.app/Contents/MacOS/themes
+themes.files = src/qt/res/themes/*
+INSTALLS += themes
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
