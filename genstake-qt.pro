@@ -460,4 +460,9 @@ contains(RELEASE, 1) {
     LIBS += -lrt -ldl
 }
 
+themes.path = $$OUT_PWD/$$DESTDIR/themes
+macx:themes.path = $$OUT_PWD/$$DESTDIR/Genstake-Qt.app/Contents/MacOS/themes
+themes.files = src/qt/res/themes/*
+INSTALLS += themes
+
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
