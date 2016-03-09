@@ -1129,7 +1129,14 @@ int64_t CWallet::GetTotalMinted() const
         {
             const CWalletTx* pcoin = &(*it).second;
             if (pcoin->IsTrusted() && pcoin->IsCoinStake())
-                nTotal += pcoin->GetAvailableCredit();
+			{
+				int64_t nMinted = pcoin->GetCredit() - pcoin->GetDebit();
+				if(nMinted & 0x8000000000000000)
+					continue; // don't count negative numbers, which can happen if not fully confirmed
+				
+				nTotal += nMinted;
+			}
+                
         }
     }
 
