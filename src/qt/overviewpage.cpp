@@ -293,6 +293,8 @@ void OverviewPage::updateBtcValueLabel(double nPrice)
     ui->labelBtcValue->setText(QString::number(nPrice * currentBalance / COIN, 'f', 6));
 }
 
+QNetworkAccessManager *manager = new QNetworkAccessManager();
+
 void OverviewPage::sendRequest()
 {
     //only update the price once every 60 seconds, don't want to call the API too many times
@@ -300,8 +302,6 @@ void OverviewPage::sendRequest()
     if(nTimeNow - nLastPriceCheck < 60)
         updateBtcValueLabel(nLastPrice);
     nLastPriceCheck = nTimeNow;
-
-    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
     // decide how to process finished() signal
     connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(handlePriceReply(QNetworkReply*)));
