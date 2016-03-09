@@ -230,6 +230,9 @@ void OverviewPage::setBalance(qint64 balance, qint64 minted, qint64 stake, qint6
 
 #if QT_VERSION >= 0x050000
     sendRequest();
+#else
+	ui->labelBtcValueText->setVisible(false);
+	ui->labelBtcValue->setVisible(false);
 #endif
 }
 
