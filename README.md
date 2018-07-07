@@ -2,15 +2,22 @@ Repo - a.k.a Ultra-pool (updated by GenStake Community July 7 2018)
 ==========================
 Updated node
 Please download bootstrap from Block synced to July 1 2018 https://mega.nz/#!iC40kAgQ!zGPVibi-GfNJDeUnhXbIXAgCqF1suUPwWIcAYk3ZREg
+
 Wallet may or may not shut down a few times before fully synced. Once fully synced the wallet is stable.
+
 Block explorer added: https://g3nbe.netcraft.ch/
 
 
 IF your still having node problems added them to the config file
+
 addnode=2001:4060:4419:8001::36
+
 addnode=95.26.151.201
+
 addnode=207.148.3.77
+
 addnode=157.161.128.53
+
 addnode=185.68.67.36:93
 
 Updated GUI icons with new g3n logo
@@ -18,11 +25,13 @@ Updated GUI icons with new g3n logo
 Discord link invite: https://discord.gg/bR7QsAu
 
 ==========================
+
 Genstake development tree
 
 Genstake is a PoS-based cryptocurrency.
 
 Development process
+
 ===========================
 
 Developers work in their own trees, then submit pull requests when
