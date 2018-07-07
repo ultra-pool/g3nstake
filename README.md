@@ -1,4 +1,4 @@
-Repo - a.k.a Ultra-pool (updated by GenStake Community July 7 2018)
+Ultra-Pool - a.k.a Repo (updated by GenStake Community July 7 2018)
 ==========================
 Updated node
 Please download bootstrap from Block synced to July 1 2018 https://mega.nz/#!iC40kAgQ!zGPVibi-GfNJDeUnhXbIXAgCqF1suUPwWIcAYk3ZREg
