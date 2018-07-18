@@ -20,6 +20,8 @@ addnode=157.161.128.53
 
 addnode=185.68.67.36:93
 
+addnode=217.69.13.191
+
 Updated GUI icons with new g3n logo
 
 Discord link invite: https://discord.gg/bR7QsAu
