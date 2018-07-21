@@ -1,12 +1,14 @@
-Ultra-Pool - a.k.a Repo (updated by GenStake Community July 7 2018)
+Ultra-Pool - a.k.a Repo (updated by GenStake Community July 20 2018)
 ==========================
 Updated node
-Please download bootstrap from Block synced to July 1 2018 https://mega.nz/#!iC40kAgQ!zGPVibi-GfNJDeUnhXbIXAgCqF1suUPwWIcAYk3ZREg
+
+Please download bootstrap from Block synced to July 20 2018 https://mega.nz/#!CKwnwSBB!zedRvQb-V1rEPL84vnWT6Xeh874X1TcJW1FD3f65nyw
 
 Wallet may or may not shut down a few times before fully synced. Once fully synced the wallet is stable.
 
 Block explorer added: https://g3nbe.netcraft.ch/
 
+Compiled wallets - https://www.dropbox.com/sh/406ecd6lqne3tnf/AABHwI6eACPHvByPviir6kTca?dl=0
 
 IF your still having node problems added them to the config file
 
@@ -14,13 +16,13 @@ addnode=2001:4060:4419:8001::36
 
 addnode=95.26.151.201
 
-addnode=207.148.3.77
+addnode=207.148.3.77   <--NEW
 
 addnode=157.161.128.53
 
 addnode=185.68.67.36:93
 
-addnode=217.69.13.191
+addnode=217.69.13.191  <--NEW
 
 Updated GUI icons with new g3n logo
 
