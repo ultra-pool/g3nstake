@@ -15,8 +15,8 @@ NOTES: How to use the backup. In windows make a folder in C:/users/<your PC name
   
   If you want to make your wallet in windows or linux VPS into a seednode helper. Make a text file and name it genstake.conf and put the following text into the new genstake.conf file 
   
-rpcuser=<Make your own rpc user name here>
-rpcpassword=<Make your own rpc password here>
+rpcuser=(Make your own rpc user name here)
+rpcpassword=(Make your own rpc password here)
 server=1
 listen=1
   
