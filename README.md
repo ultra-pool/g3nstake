@@ -1,3 +1,28 @@
+Ultra-Pool - a.k.a Repo (updated by GenStake Community Oct 02 2018)
+==========================
+Update: Nova Exchange has deposits reopened now.
+
+New exchange being added soon.
+
+Please download bootstrap from Block synced 0-1565178 on Oct 02 2018: https://mega.nz/#F!OGJEyCKJ!HTpycXeCTuB9edN610nBiQ
+
+Keep up to date via our Discord server: https://discord.gg/bR7QsAu
+
+NOTES: How to use the backup. In windows make a folder in C:/users/<your PC name>/appdata/roaming/  Name the folder Genstake
+  Unzip the backup folder contents into the new folder. 
+  In linux goto your /home/<userName>/ make a folder and name it .genstake (this will be a hidden folder. Unzip the contents into the    new folder.
+  Boot up your windows Genstake wallet and let it load the block chain. Please read the other notes below.
+  
+  If you want to make your wallet in windows or linux VPS into a seednode helper. Make a text file and name it genstake.conf and put the following text into the new genstake.conf file 
+  
+rpcuser=<Make your own rpc user name here>
+rpcpassword=<Make your own rpc password here>
+server=1
+listen=1
+  
+  
+  
+
 Ultra-Pool - a.k.a Repo (updated by GenStake Community July 20 2018)
 ==========================
 Updated node
@@ -24,7 +49,7 @@ addnode=185.68.67.36:93
 
 addnode=217.69.13.191  <--NEW
 
-Updated GUI icons with new g3n logo
+Updated GUI icons with new g3n logo in source
 
 Discord link invite: https://discord.gg/bR7QsAu
 
