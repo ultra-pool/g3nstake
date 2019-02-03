@@ -1,10 +1,10 @@
-Ultra-Pool - a.k.a Repo (updated by GenStake Community Oct 02 2018)
+Ultra-Pool - a.k.a Repo (updated by GenStake Community Feb 02 2019)
 ==========================
 Update: Nova Exchange has deposits reopened now.
 
 New exchange being added soon.
 
-Please download bootstrap from Block synced 0-1565178 on Oct 02 2018: https://mega.nz/#F!OGJEyCKJ!HTpycXeCTuB9edN610nBiQ
+Please download bootstrap from Block synced upto Feb 02 2019: https://mega.nz/#!LTx1DALT!Urxke3W0m2DuKURgKJF_GJoypB22cJTqph75cVGHz9c
 
 Keep up to date via our Discord server: https://discord.gg/bR7QsAu
 
